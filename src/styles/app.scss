@@ -1,0 +1,20 @@
+@import "../style/yo/lib/core/merge-extra";
+@import "../style/yo/lib/core/merge-config";
+@import "../style/yo/lib/core/reset";
+@import "../style/yo/lib/core/classes/animation.scss";
+@import "../style/yo/lib/ani/classes.scss";
+@import "../style/yo/lib/ani/elastic-in-right.scss";
+
+@font-face{
+	font-family: "yofont";
+	src: url("../assets/iconfont/iconfont.ttf") format('truetype'),
+	url("../assets/iconfont/iconfont.woff") format('woff')
+}
+
+html{
+	font-size: 15.625vw;
+}
+
+body{
+	overflow: auto;
+}

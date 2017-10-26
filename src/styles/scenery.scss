@@ -1,0 +1,24 @@
+@import "../style/yo/lib/core/merge-extra";
+@import "../style/yo/lib/core/merge-config";
+@import "../style/yo/lib/core/reset";
+
+.mainview{
+   overflow-y: scroll;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    font-size: 0.12rem;
+    
+}
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 31.25vw;
+}
+
+@font-face {
+  font-family: 'yofont';
+  src: url('http://localhost:8000/media/iconfont/iconfont.woff') format('woff'), url('http://localhost:8000/media/iconfont/iconfont.ttf') format('truetype')
+}

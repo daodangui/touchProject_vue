@@ -1,0 +1,21 @@
+@import "../style/yo/lib/core/merge-extra";
+@import "../style/yo/lib/core/merge-config";
+@import "../style/yo/lib/core/reset";
+
+@font-face{
+	font-family: "yofont";
+	src: url("../assets/iconfont/liconfont/iconfont.ttf") format('truetype'),
+	url("../assets/iconfont/liconfont/iconfont.woff") format('woff');
+}
+
+body{
+	overflow: auto;
+	background: #edf0f5;
+}
+
+#container{
+	#header{
+		height: .44rem;
+		background: #fff;
+	}
+}
