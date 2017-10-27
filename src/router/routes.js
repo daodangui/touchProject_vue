@@ -3,6 +3,9 @@ import copMemberPage from '../page/member.vue';
 import Index from '../page/index.vue';
 import cityList from '../page/cityList.vue';
 import scenery from '../page/scenery.vue';
+import collect from '../page/collect.vue';
+import mycollect from '../page/mycollect.vue';
+import register from '../page/register.vue';
 
 export default [
 	{
@@ -18,10 +21,25 @@ export default [
 	{
 		path: '/memberPage',
 		component: copMemberPage,
-		name: 'memberPage'
+		name: 'memberPage',
+		children: [
+			{
+				path: '/collect',
+				component: collect
+			}
+		]
 	},
 	{
 		path: '/scenery',
 		component: scenery
+	},
+	{
+		path: '/mycollect',
+		component: mycollect
+	},
+	{
+
+		path: '/register',
+		component: register
 	}
 ]

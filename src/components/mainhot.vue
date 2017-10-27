@@ -36,7 +36,11 @@ export default {
 		    }
 		})
 		.then(function (response) {
-		    $this.hotCity = response.data.response.body.groupList[0].cellItem;
+			response.data.response.body.groupList.forEach(function(value){
+				if(value.groupName == '热门榜单'){
+		    		$this.hotCity = value.cellItem;	
+				}
+			})
 		})
 		.catch(function (error) {
 		    console.log(error);

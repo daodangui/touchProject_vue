@@ -8,30 +8,18 @@
 			<div class="swiperBox">
 				<cpt-swiper />
 			</div>
-			<template>
-				<cpt-mainnav />
-			</template>
+			<cpt-mainnav />
 			<!-- 热门目的地 -->
-			<template>
-				<cpt-mainhot />
-			</template>
+			<cpt-mainhot />
 			<!-- 旅行特卖 -->
-			<template>
-				<cpt-mainlv />
-			</template>
+			<cpt-mainlv />
 			<!-- 精选活动 -->
-			<template>
-				<cpt-mainactivity />
-			</template>
+			<cpt-mainactivity />
 			<!-- 热门玩法 -->
-			<template>
-				<cpt-mainhotplay />
-			</template>
+			<cpt-mainhotplay />
 		</section>
 		<footer id="footer">
-			<template>
-				<cpt-mainfoot />
-			</template>
+			<cpt-mainfoot />
 		</footer>
 	</div>
 </template>

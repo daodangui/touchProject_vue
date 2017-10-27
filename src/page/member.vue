@@ -1,23 +1,18 @@
 <template>
 	<div id="container" :class="ani">
-		<header id="header">
-			
-		</header>
+		<header id="header"></header>
 		<section id="content">
 			<!-- 头部巨幕 -->
-			<template>
-				<cpt-login />
-			</template>
+			<cpt-login />
 			<!-- 菜单选项 -->
-			<template>
-				<cpt-nav />
-			</template>
+			<cpt-nav />
 		</section>
 		<footer id="footer"> 
-			<template>
-				<cpt-foot />
-			</template>
+			<cpt-foot />
 		</footer>
+		<div class="memberMenu">
+			<router-view></router-view>
+		</div>
 	</div>
 </template>
 

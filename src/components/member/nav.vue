@@ -41,11 +41,11 @@
 				</a>
 			</div>
 			<div class="menubar">
-				<a href="">
+				<router-link to="/collect" tag="a" href="javascript:void(0)" >
 					<i class="yo-ico">&#xe68b;</i>
 					<span>我的收藏</span>
 					<i class="yo-ico">&#xe601;</i>
-				</a>
+				</router-link>
 			</div>
 			<div class="menubar">
 				<a href="">

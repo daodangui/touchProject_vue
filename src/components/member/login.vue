@@ -3,9 +3,9 @@
 		<div>
 			<dl>
 				<dt class="avatar"></dt>
-				<dd>
-					<a href="">登录</a>/<a href="">注册</a>
-				</dd>
+				<router-link tag="dd" to="/register">
+					<a href="javascript:void(0)">登录</a>/<a href="javascript:void(0)">注册</a>
+				</router-link>
 			</dl>
 		</div>
 		<div>

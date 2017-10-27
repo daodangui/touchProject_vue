@@ -13,9 +13,6 @@
 			<router-link tag="div" to="/memberPage" class="headMy">
 				<i class="yo-ico">&#xe602;</i>
 			</router-link>
-			<!-- <div class="headMy">
-				<i class="yo-ico">&#xe602;</i>
-			</div> -->
 		</div>
 	</div>
 </template>
