@@ -4,14 +4,33 @@
 			
 		</header>
 		<section class="regcontent">
-			<mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
-			<mt-field label="邮箱" placeholder="请输入邮箱" type="email" v-model="email"></mt-field>
+			<mt-field  placeholder="请输入手机号码" v-model="username"></mt-field>
+			<mt-field  placeholder="请输入密码" type="emil" v-model="password"></mt-field>
+			<mt-button class="submit" type="danger">提交注册信息</mt-button>
 		</section>
+		<footer>
+			<cpt-foot></cpt-foot>
+		</footer>
 	</div>
 </template>
 
 <script>
-	
+import foot from '../components/member/memberfoot.vue'
+
+export default {
+	data(){
+		return {
+			username: '',
+			password: ''
+		}
+	},
+	components: {
+		'cpt-foot': foot
+	},
+	created(){
+		document.documentElement.style.fontSize = '31.25vw'
+	}
+}
 </script>
 
 <style lang="scss">
@@ -25,11 +44,22 @@
 		background: #fff;
 	}
 	.regcontent{
-		height: 2.5rem;
-		margin-top: .1rem;
+		padding-top: .1rem;
 		padding: .12rem .15rem;
 		background: #fff;
-		padding: 0rem .15rem;
+		padding-bottom: .25rem;
+		text-align: center;
+		.submit{
+			width: 80%;
+			height: .35rem;
+			font-size: .14rem;
+			margin-top: .1rem;
+		}
 	}
+}
+footer{
+	position: absolute;
+	width: 100%;
+	bottom: .2rem;
 }
 </style>

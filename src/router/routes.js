@@ -6,6 +6,7 @@ import scenery from '../page/scenery.vue';
 import collect from '../page/collect.vue';
 import mycollect from '../page/mycollect.vue';
 import register from '../page/register.vue';
+import login from '../page/login.vue';
 
 export default [
 	{
@@ -38,8 +39,11 @@ export default [
 		component: mycollect
 	},
 	{
-
 		path: '/register',
 		component: register
+	},
+	{
+		path: '/login',
+		component: login
 	}
 ]

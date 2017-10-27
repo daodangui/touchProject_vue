@@ -7,7 +7,7 @@
 			<mt-cell-swipe v-for="i in 6" class="iteminfo"
 			  title="北京稻香湖景酒店"
 			  label="【快乐童心】2大1小尽享亲子DIY2大1小尽享亲子DIY2大1小尽享亲子DIY2大1小尽享亲子DIY2大1小尽享亲子DIY"
-			  :right="rightinfo" to='/'>
+			  :right="rightinfo" >
 				<slot>
 					<span class="price"><span>￥</span><span>399</span><span>起</span></span>
 				</slot>

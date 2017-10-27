@@ -3,9 +3,9 @@
 		<div>
 			<dl>
 				<dt class="avatar"></dt>
-				<router-link tag="dd" to="/register">
-					<a href="javascript:void(0)">登录</a>/<a href="javascript:void(0)">注册</a>
-				</router-link>
+				<dd>
+					<a @click="toLogin()" href="javascript:void(0)">登录</a>/<a @click="routerToregister()" href="javascript:void(0)">注册</a>
+				</dd>
 			</dl>
 		</div>
 		<div>
@@ -22,6 +22,14 @@ export default {
 	data(){
 		return {
 
+		}
+	},
+	methods: {
+		routerToregister(){
+			this.$router.push('/register')
+		},
+		toLogin(){
+			this.$router.push('/login')
 		}
 	}
 }
