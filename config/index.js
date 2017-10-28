@@ -27,18 +27,39 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: process.env.PORT || 8000,
+    port: process.env.PORT || 5000,
     autoOpenBrowser: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        '/api': {
+      '/api': {
         target: 'https://m.ly.com',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
         }
+      },
+      
+      
+      //yp  配置mock数据
+      '/vip': {
+				target: 'http://localhost:3000/',
+				changeOrigin: true,
+				pathRewrite: {
+					'^/vip': ''
+				}
+			},
+			
+			//yp  数据
+			'/bip': {
+        target: 'https://servicegw.ly.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/bip': ''
+        }
       }
+      
+      
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

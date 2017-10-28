@@ -2,7 +2,7 @@
 	<div class="nav">
 		<div class="pic">
 			<a href="">
-				<img src="/media/images/palace.jpg" />
+				<img src="../../assets/images/yimages/palace.jpg" />
 			</a>
 			<div class="pic-mask">
 				<span>北京故宫</span>
@@ -28,7 +28,7 @@
 
 			<div class="bottom-plus">
 				<a href="">
-					<img src="/media/images/plus_icon.png" /> PLUS会员优惠 最高立省
+					<img src="../../assets/images/yimages/plus_icon.png" /> PLUS会员优惠 最高立省
 					<span class="plus_mon">20</span>元/张
 					<span class="plus_span">
 				 		立即开通
@@ -42,11 +42,11 @@
 </template>
 
 <script>
-	import '../../media/images/yimages/palace.jpg';
-	import '../../media/images/yimages/labelicon.png';
-	import '../../media/images/yimages/a_comment.png';
-	import '../../media/images/yimages/arrow_ico.png';
-	import '../../media/images/yimages/plus_icon.png';
+	import '../../assets/images/yimages/palace.jpg';
+	import '../../assets/images/yimages/labelicon.png';
+	import '../../assets/images/yimages/a_comment.png';
+	import '../../assets/images/yimages/arrow_ico.png';
+	import '../../assets/images/yimages/plus_icon.png';
 
 	export default {
 		data() {
@@ -117,7 +117,7 @@
 					line-height: 0.26rem;
 					em {
 						display: inline-block;
-						background: url(/media/images/labelicon.png) no-repeat;
+						background: url(../../assets/images/yimages/labelicon.png) no-repeat;
 						background-size: 11px 11px;
 						height: 11px;
 						width: 11px;
@@ -153,7 +153,7 @@
 						display: inline-block;
 						width: 7px;
 						height: 13px;
-						background: url(/media/images/arrow_ico.png) no-repeat;
+						background: url(../../assets/images/yimages/arrow_ico.png) no-repeat;
 						background-size: 7px 13px;
 					}
 				}
@@ -164,7 +164,11 @@
 				background: #f9fafc;
 				padding: 0 0.2rem 0 0.15rem;
 				margin-bottom: 0.01rem;
+				font-size: 0.1rem;
 				a {
+					display: inline-block;
+					width: 100%;
+					height: 100%;
 					color: #434d59;
 					line-height: 0.33rem;
 					img {
@@ -173,15 +177,16 @@
 						margin-right: 0.04rem;
 					}
 					.plus_span {
+						display: flex;
+						flex-direction: row;
 						width: 0.73rem;
 						display: inline-block;
-						text-align: center;
 						em {
-							margin-left: 0.12rem;
+							margin-left: 0.13rem;
 							display: inline-block;
 							width: 7px;
 							height: 13px;
-							background: url(/media/images/arrow_ico.png) no-repeat;
+							background: url(../../assets/images/yimages/arrow_ico.png) no-repeat;
 							background-size: 7px 13px;
 						}
 					}

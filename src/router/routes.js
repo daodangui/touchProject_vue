@@ -4,6 +4,9 @@ import Index from '../page/index.vue';
 import cityList from '../page/cityList.vue';
 import scenery from '../page/scenery.vue';
 
+import details from '../page/details.vue';
+import collect from '../page/collect.vue';
+
 export default [
 	{
 		path: '/',
@@ -23,5 +26,15 @@ export default [
 	{
 		path: '/scenery',
 		component: scenery
+	},
+	{
+		path: '/details',
+		component: details,
+		name : 'details'
+	},
+	{
+		path: '/collect/:list',
+		component: collect,
+		name : 'collect'
 	}
 ]

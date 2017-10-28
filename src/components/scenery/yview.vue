@@ -70,15 +70,36 @@
 		},
 
 		mounted() {
-			//请求数据通过axios,数据用到是mock数据，用到反向代理
-			//通过json-server自建服务器，具体在mock文件夹中
-			console.log(axios);
-			axios.get('/vip/view.php')
-				.then((res) => {
-					const data = res.data.data.SceneryList;
-					//将请求到的数据赋值给dataList(data中的数据)
-					this.dataList = data;
-				})
+			var $this = this;
+//			axios.get('/vip/view.php')
+//				.then((res) => {
+//					const data = res.data.data.SceneryList;
+//					this.dataList = data;
+//				})
+			axios.post('/bip/gateway/scenery.resource/v1/resource/scenerysrcommend/nearcityscenery/?Labrador-Token=0a905013-886c-48d7-936f-c08226227398', {
+		    		totalcount: 10,
+		    		height: 160,
+		    		width: 180,
+		    		pagesize:18,
+		    		Page: 1,
+		    		cityId: 53,
+		    		permanentcityid:"",
+		    		lon: 0,
+		    		lat: 0,
+		    		environment:2,
+		    		os: 0,
+		    		MermberId: "",
+		    		SortOrderType:2901001,
+		    		IsNeedShurtTour:1
+			})
+			.then(function (response) {
+				//与源数据不对口
+				const data = response.data.data.SceneryList;
+					$this.dataList = data;
+			})
+			.catch(function (error) {
+			    console.log(error);
+			});
 		}
 	}
 </script>
@@ -171,13 +192,17 @@
 							.list-money {
 								width: 100%;
 								height: 0.16rem;
+								display: flex;
+								flex-direction: row;
 								.detail {
 									color: #999;
 									/*width: 0.85rem;*/
 									width: 0.95rem;
 									height: 0.16rem;
 									line-height: 0.16rem;
-									display: inline-block;
+									/*display: inline-block;*/
+									display:flex;
+									flex-direction:row;
 									.list-price {}
 									.yj {
 										font-size: 0.08rem;
