@@ -8,7 +8,7 @@ export default {
      		state.list.push(obj);
    		},
    		removelist(state) {
-     		state.list.pop();
+     		state.list = [];
    		},
 	}
 }

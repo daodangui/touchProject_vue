@@ -4,14 +4,15 @@
 			<cpt-head />
 		</header>
 		<section class="mycolcontent">
-			<mt-cell-swipe v-for="i in 6" class="iteminfo"
+			<!-- <mt-cell-swipe v-for="item in this.$store.state.b.showList" class="iteminfo"
+			  :key="item.id"
 			  title="北京稻香湖景酒店"
 			  label="【快乐童心】2大1小尽享亲子DIY2大1小尽享亲子DIY2大1小尽享亲子DIY2大1小尽享亲子DIY2大1小尽享亲子DIY"
 			  :right="rightinfo" >
 				<slot>
 					<span class="price"><span>￥</span><span>399</span><span>起</span></span>
 				</slot>
-			  </mt-cell-swipe>
+			 </mt-cell-swipe> -->
 		</section>
 	</div>
 </template>
@@ -54,6 +55,7 @@ export default {
 	},
 	created(){
 		document.documentElement.style.fontSize = '31.25vw'
+		console.log(this.$store.state.b.showList);
 	}
 }
 </script>

@@ -90,8 +90,10 @@
 				this.index = k;
 				var s="#"+k;
 				var anchor = document.querySelector(s);
-				document.body.scrollTop = anchor.offsetTop; // chrome
-				document.documentElement.scrollTop = anchor.offsetTop; // firefox
+				// document.body.scrollTop = anchor.offsetTop; // chrome
+				// document.documentElement.scrollTop = anchor.offsetTop; // firefox
+				document.querySelector('#body').scrollTop = anchor.offsetTop;
+				console.log(anchor.offsetTop);
 			}
 		},
 		
