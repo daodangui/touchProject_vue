@@ -28,9 +28,6 @@
 </template>
 
 <script>
-	// import '../../media/images/yimages/page-back.png';
-	// import '../../media/images/yimages/sprite.png';
-
 	export default {
 		data() {
 			return {
@@ -42,6 +39,12 @@
 			show(){
 				this.isShow=!this.isShow;
 			}
+		},
+		mounted() {
+//			console.log(this.$store.state.a.list);
+//			console.log(this.$store.state.hhh)
+//			this.$store.commit("addlist");
+//			console.log(this.$store.state.a.list);
 		}
 	}
 </script>
@@ -49,8 +52,8 @@
 <style lang="scss" scoped="scoped">
 	@import "../../style/yo/lib/core/merge-extra";
 	@import "../../style/yo/lib/core/merge-config";
-	/*@import "../../style/yo/lib/core/function";*/
-	/*@import "../../style/yo/lib/core/classes";*/
+	@import "../../style/yo/lib/core/function";
+	@import "../../style/yo/lib/core/classes";
 	
 	#headContent {
 		width: 100%;

@@ -49,12 +49,15 @@
 		},
 		methods: {
 			gotocollect(list) {
-				this.$router.push({
-					name: 'ycollect',
-					params: {
-						list: list
-					}
-				});
+//				this.$router.push({
+//					name: 'ycollect',
+//					params: {
+//						list: list
+//					}
+//				});
+				this.$router.push("/ycollect");
+				this.$store.commit("addlist",list);
+//				console.log(this.$store.state.a.list);
 			},
 		},
 		mounted() {

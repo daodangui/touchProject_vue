@@ -1,9 +1,11 @@
 <template>
-	<div class="collect">
+	<div class="collect" v-if="data">
 		<div class="word">
-			<h6>北京北大博雅国际酒店/北京天伦王朝酒店/北京京滨饭店等+北京故宫/颐和园</h6>
+			<!--<h6>北京北大博雅国际酒店/北京天伦王朝酒店/北京京滨饭店等+北京故宫/颐和园</h6>-->
+			<h6>{{data.Name}}</h6>
+			
 			<label>
-      		   	<span>¥<strong>820</strong></span>
+      		   	<span>¥<strong>{{data.Pirce}}</strong></span>
        		  	起/份
         	    <div class="explain">起价说明</div>
        		 </label>
@@ -12,6 +14,20 @@
 </template>
 
 <script>
+	export default {
+		data() {
+			return {
+				data : null
+			}
+		},
+		methods:{
+		},
+		mounted() {
+			this.data = this.$store.state.a.list[0];
+//			this.$store.commit("addlist");
+//			console.log(this.$store.state.a.list);
+		}
+	}
 </script>
 
 <style lang="scss" scoped="scoped">
@@ -29,6 +45,8 @@
 				font-size: .16rem;
 				color: #333;
 				font-weight: 500;
+				overflow: hidden;
+				height: 0.48rem;
 			}
 			label {
 				display: flex;

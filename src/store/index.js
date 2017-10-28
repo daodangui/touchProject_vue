@@ -5,10 +5,15 @@ Vue.use(Vuex);
 
 //引入Vuex模块
 import collect from './modules/collect';
+import show from './modules/show';
 
 const store = new Vuex.Store({
 	modules: {
-		collect
+		a:collect,
+		b:show,
+	},
+	state:{
+		
 	}
 });
 

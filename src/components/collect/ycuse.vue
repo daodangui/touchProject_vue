@@ -1,8 +1,8 @@
 <template>
-	<div class="use">
+	<div class="use" v-if="data">
 		<h6> 使用说明</h6>
 		<div class="step">
-			<p>1.南宫温泉</p>
+			<p>{{data.Name}}</p>
 			<p>开园时间：10:00-21:00</p>
 			<p>必要证件：无</p>
 		</div>
@@ -32,6 +32,16 @@
 </template>
 
 <script>
+	export default {
+		data() {
+			return {
+				data : null
+			}
+		},
+		mounted() {
+			this.data = this.$store.state.a.list[0];
+		}
+	}
 </script>
 
 <style lang="scss" scoped="scoped">
@@ -57,6 +67,11 @@
 			flex-direction: column;
 			p{
 				line-height: 0.25rem;
+				width: 100%;
+				height: 0.25rem;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 		}
 		ul{
