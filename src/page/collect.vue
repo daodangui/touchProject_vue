@@ -1,6 +1,8 @@
 <template>
 	<div class="collect" :class="ani">
-		<header class="colheader"></header>
+		<header class="colheader">
+			<cpt-head />
+		</header>
 		<section class="colcontent">
 			<mt-cell title="酒店收藏" to="/mycollect" :is-link="true">
 				<img slot="icon" src="../assets/iconfont/hotel.png" width="20" height="20">
@@ -25,6 +27,7 @@
 </template>
 
 <script>
+import cptHead from '@/components/scenery/yheader.vue';
 
 export default{
 	data(){
@@ -34,6 +37,9 @@ export default{
 				'elastic-in-right': true
 			}
 		}
+	},
+	components: {
+		'cpt-head': cptHead
 	},
 	created(){
 		document.documentElement.style.fontSize = '31.25vw'

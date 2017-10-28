@@ -1,7 +1,7 @@
 <template>
 	<div class="mycollect" :class="ani">
 		<header class="mycolheader">
-			
+			<cpt-head />
 		</header>
 		<section class="mycolcontent">
 			<mt-cell-swipe v-for="i in 6" class="iteminfo"
@@ -17,7 +17,8 @@
 </template>
 
 <script>
-	
+import cptHead from '@/components/scenery/yheader.vue';
+
 export default {
 	data(){
 		return {
@@ -43,10 +44,13 @@ export default {
 						textAlign: 'center',
 						color: '#fff'
 			      },
-			      handler: () => this.$messagebox('delete')
+			      handler: () => this.$messagebox('移除该条收藏')
 			    }
 			]
 		}
+	},
+	components: {
+		'cpt-head': cptHead
 	},
 	created(){
 		document.documentElement.style.fontSize = '31.25vw'
@@ -77,7 +81,7 @@ export default {
 		.mint-cell-label{
 			display: inline-block;
 			@include wrap(false);
-			@include ellipsis(2.5rem, 1);
+			@include ellipsis(2.2rem, 1);
 		}
 		.price{
 			span:first-child{

@@ -10,10 +10,18 @@
 			<section>
 				<mt-tab-container v-model="selected">
 				  <mt-tab-container-item id="1">
-					   	
+					   	<mt-field placeholder="请输入手机号码或邮箱" v-model="username"></mt-field>
+						<mt-field placeholder="请输入密码" type="password" v-model="password"></mt-field>
+
+						<mt-button type="danger" class="loginBtn">登录</mt-button>
+						<p><a href="javascript:void(0)">忘记密码？</a><a href="javascript:void(0)" @click="toRegister">注册</a></p>
 				  </mt-tab-container-item>
 				  <mt-tab-container-item id="2">
-				    
+				    	<mt-field placeholder="请输入手机号码" v-model="phone"></mt-field>
+						<mt-field placeholder="请输入手机验证码" type="number" v-model="number"></mt-field>
+
+						<mt-button type="danger" class="loginBtn">登录</mt-button>
+						<p><a href="javascript:void(0)" @click="toRegister">注册</a></p>
 				  </mt-tab-container-item>
 				</mt-tab-container>
 			</section>
@@ -29,7 +37,16 @@
 export default{
 	data(){
 		return {
-			selected: '1'   //必须是字符串形式
+			selected: '1',   //必须是字符串形式
+			username: '',
+			password: '',
+			phone: '',
+			number: ''
+		}
+	},
+	methods: {
+		toRegister(){
+			this.$router.push('/register');
 		}
 	},
 	created(){
@@ -52,6 +69,28 @@ export default{
 		background-color: #fff;
 		.mint-tab-item-label{
 			font-size: .14rem;
+		}
+	}
+	section{
+		padding-bottom: .2rem;
+		margin-top: .1rem;
+		text-align: center;
+		.loginBtn{
+			color: #fff;
+			width: 100%;
+			margin: .05rem 0rem;
+		}
+		p{
+			font-size: .12rem;
+			a{
+				color: #0099FF;
+				&:first-child{
+					float: left;
+				}
+				&:last-child{
+					float: right;
+				}
+			}
 		}
 	}
 }

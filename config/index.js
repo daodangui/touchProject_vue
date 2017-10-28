@@ -45,6 +45,14 @@ module.exports = {
             pathRewrite: {
                 '^/city': ''
             }
+        },
+        '/dologin': {
+            target: 'http://localhost:8080/officemateGit/',
+            changeOrigin: true
+        },
+        '/doregister': {
+            target: 'http://localhost:8080/officemateGit/',
+            changeOrigin: true
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

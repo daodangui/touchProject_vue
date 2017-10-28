@@ -37,6 +37,7 @@
 				<a href="">
 					<i class="yo-ico">&#xe625;</i>
 					<span>常用信息</span>
+					<span class="remark">常用旅客、邮寄地址</span>
 					<i class="yo-ico">&#xe601;</i>
 				</a>
 			</div>
@@ -91,6 +92,11 @@ export default {
 	.menubar{
 		height: .426rem;
 		background: #fff;
+		.remark{
+			font-size: .11rem;
+			color: #999;
+			margin-left: .7rem;
+		}
 		a{
 			display: inline-block;
 			width: 100%;
@@ -115,5 +121,6 @@ export default {
 			}
 		}
 	}
+	
 }
 </style>

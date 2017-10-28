@@ -1,7 +1,7 @@
 <template>
 	<div class="register">
 		<header class="regheader">
-			
+			<cpt-head />
 		</header>
 		<section class="regcontent">
 			<mt-field  placeholder="请输入手机号码" v-model="username"></mt-field>
@@ -16,6 +16,8 @@
 
 <script>
 import foot from '../components/member/memberfoot.vue'
+import cptHead from '@/components/scenery/yheader.vue';
+import axios from 'axios';
 
 export default {
 	data(){
@@ -24,8 +26,14 @@ export default {
 			password: ''
 		}
 	},
+	methods: {
+		doregister(){
+			
+		}
+	},
 	components: {
-		'cpt-foot': foot
+		'cpt-foot': foot,
+		'cpt-head': cptHead
 	},
 	created(){
 		document.documentElement.style.fontSize = '31.25vw'
@@ -33,7 +41,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .register{
 	width: 100%;

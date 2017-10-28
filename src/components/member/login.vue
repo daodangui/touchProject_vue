@@ -12,7 +12,7 @@
 			<p><i></i><span>签到送游币</span></p>
 		</div>
 		<img src="https://pic4.40017.cn/index/slide/2017/02/03/10/5WpEc4.png" alt="">
-		<i class="yo-ico">&#xe601;</i>
+		<i class="yo-ico" @click="toLogin()">&#xe601;</i>
 	</div>
 </template>
 

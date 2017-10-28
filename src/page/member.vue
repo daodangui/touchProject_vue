@@ -1,6 +1,8 @@
 <template>
 	<div id="container" :class="ani">
-		<header id="header"></header>
+		<header id="header">
+			<cpt-head />
+		</header>
 		<section id="content">
 			<!-- 头部巨幕 -->
 			<cpt-login />
@@ -21,6 +23,7 @@
 import cptLogin from '@/components/member/login.vue';
 import cptNav from '@/components/member/nav.vue';
 import cptFoot from '@/components/member/memberfoot.vue';
+import cptHead from '@/components/scenery/yheader.vue';
 
 export default {
 	data(){
@@ -34,7 +37,8 @@ export default {
 	components: {
 		'cpt-login': cptLogin,
 		'cpt-nav': cptNav,
-		'cpt-foot': cptFoot
+		'cpt-foot': cptFoot,
+		'cpt-head': cptHead
 	},
 	created(){
 		document.documentElement.style.fontSize = '31.25vw';
