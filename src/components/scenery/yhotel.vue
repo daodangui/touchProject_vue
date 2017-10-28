@@ -50,7 +50,7 @@
 		methods: {
 			gotocollect(list) {
 				this.$router.push({
-					name: 'collect',
+					name: 'ycollect',
 					params: {
 						list: list
 					}

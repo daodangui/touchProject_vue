@@ -83,7 +83,7 @@
 				// 编程式导航，不是通过a 标签来定义导航链接，我们还可以借助 router 的实例方法，通过编写代码来实现
 				// 在 Vue 实例内部，你可以通过 $router 访问路由实例。因此你可以调用 this.$router.push。
 				//				this.$router.push("/details");
-				this.$router.push("/collect");
+				this.$router.push("/ycollect");
 			}
 		},
 		mounted() {

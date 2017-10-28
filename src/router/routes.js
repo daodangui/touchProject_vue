@@ -5,7 +5,7 @@ import cityList from '../page/cityList.vue';
 import scenery from '../page/scenery.vue';
 
 import details from '../page/details.vue';
-import collect from '../page/collect.vue';
+import ycollect from '../page/ycollect.vue';
 
 export default [
 	{
@@ -33,8 +33,8 @@ export default [
 		name : 'details'
 	},
 	{
-		path: '/collect/:list',
-		component: collect,
-		name : 'collect'
+		path: '/ycollect/:list',
+		component: ycollect,
+		name : 'ycollect'
 	}
 ]
