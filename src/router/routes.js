@@ -8,6 +8,9 @@ import mycollect from '../page/mycollect.vue';
 import register from '../page/register.vue';
 import login from '../page/login.vue';
 
+import details from '../page/details.vue';
+import ycollect from '../page/ycollect.vue';
+
 export default [
 	{
 		path: '/',
@@ -45,5 +48,15 @@ export default [
 	{
 		path: '/login',
 		component: login
+	},
+	{
+		path: '/details',
+		component: details,
+		name : 'details'
+	},
+	{
+		path: '/ycollect/:list',
+		component: ycollect,
+		name : 'ycollect'
 	}
 ]

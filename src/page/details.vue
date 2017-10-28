@@ -27,13 +27,13 @@
 </template>
 
 <script>
-	import yheader from './yheader.vue';
-	import ydnav from './ydnav.vue';
-	import ydticket from './ydticket.vue';
-	import ydcomment from './ydcomment.vue';
-	import ydscenery from './ydscenery.vue';
-	import ybottom from './ybottom.vue';
-	import yd from './yd.vue';
+	import yheader from '../components/scenery/yheader.vue';
+	import ydnav from '../components/scenery/ydnav.vue';
+	import ydticket from '../components/scenery/ydticket.vue';
+	import ydcomment from '../components/scenery/ydcomment.vue';
+	import ydscenery from '../components/scenery/ydscenery.vue';
+	import ybottom from '../components/scenery/ybottom.vue';
+//	import yd from './yd.vue';
 	
 	export default {
 		data() {
@@ -46,6 +46,9 @@
 		methods: {
 		},
 		mounted() {
+		},
+		created(){
+			document.documentElement.style.fontSize = '31.25vw';
 		},
 		components: {
 			'y-header': yheader,

@@ -27,7 +27,7 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: process.env.PORT || 8000,
+    port: process.env.PORT || 5000,
     autoOpenBrowser: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -53,6 +53,15 @@ module.exports = {
         '/doregister': {
             target: 'http://localhost:8080/officemateGit/',
             changeOrigin: true
+        },
+			
+		//yp  数据
+		'/bip': {
+            target: 'https://servicegw.ly.com',
+            changeOrigin: true,
+            pathRewrite: {
+              '^/bip': ''
+            }
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

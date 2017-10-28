@@ -5,10 +5,10 @@
 		</div>
 
 		<ul class="hotel-list">
-			<li v-for="(list,i) in dataList" :key="i">
-				<a href="">
+			<li v-for="(list,i) in dataList" :key="i" @click="gotocollect(list)">
+				<a href="javascript:void(0)">
 					<div class="hotel-left">
-						<img :src="list.PictureUrl" alt=""/>
+						<img :src="list.PictureUrl" alt="" />
 					</div>
 
 					<div class="hotel-right">
@@ -40,26 +40,53 @@
 </template>
 
 <script>
-//	import '../../media/images/yimages/hotel.jpg';
-
 	import axios from 'axios'
 	export default {
 		data() {
 			return {
-				dataList: [],
-//				isShowloading: true
+				dataList: []
 			}
 		},
-
+		methods: {
+			gotocollect(list) {
+				this.$router.push({
+					name: 'ycollect',
+					params: {
+						list: list
+					}
+				});
+			},
+		},
 		mounted() {
-			//请求数据通过axios,数据用到是mock数据，用到反向代理
-			//通过json-server自建服务器，具体在mock文件夹中
-			axios.get('/vip/listhotel.php')
-				.then((res) => {
-					const data = res.data.data.LineList;
-					//将请求到的数据赋值给dataList(data中的数据)
-					this.dataList = data;
-				})
+			var $this = this;
+//			axios.get('/vip/listhotel.php')
+//				.then((res) => {
+//					const data = res.data.data.LineList;
+//					this.dataList = data;
+//				})
+			axios.post('/bip/gateway/scenery.resource/v1/resource/selftrecommend/recommend/?Labrador-Token=0a905013-886c-48d7-936f-c08226227398', {
+		    		totalcount: 10,
+		    		height: 160,
+		    		width: 180,
+		    		pagesize:18,
+		    		Page: 1,
+		    		cityId: 53,
+		    		permanentcityid:"",
+		    		lon: 0,
+		    		lat: 0,
+		    		environment:2,
+		    		os: 0,
+		    		MermberId: "",
+		    		SortOrderType:2901001,
+		    		IsNeedShurtTour:1
+			})
+			.then(function (response) {
+				const data = response.data.data.LineList;
+				$this.dataList = data;
+			})
+			.catch(function (error) {
+			    console.log(error);
+			});
 		}
 	}
 </script>
@@ -105,7 +132,6 @@
 				height: 1rem;
 				margin-top: 0.1rem;
 				padding-bottom: 0.1rem;
-				/*background: darkblue;*/
 				a {
 					display: flex;
 					flex-direction: row;
@@ -174,15 +200,15 @@
 								margin-bottom: 0.05rem;
 							}
 						}
-						.hotel-count{
+						.hotel-count {
 							width: 2rem;
 							height: 0.12rem;
 							margin-top: 0.05rem;
-							.hotel-count-wrap{
+							.hotel-count-wrap {
 								width: 2rem;
 								height: 0.12rem;
 								line-height: 0.12rem;
-								color:  #777;
+								color: #777;
 							}
 						}
 					}

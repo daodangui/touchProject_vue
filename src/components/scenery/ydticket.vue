@@ -68,9 +68,10 @@
 </template>
 
 <script>
-	import '../../media/images/yimages/ticket_1.png';
-	import '../../media/images/yimages/labelicon.png';
-
+	
+	import Vue from 'vue';
+	
+	import axios from 'axios'
 	export default {
 		data() {
 			return {
@@ -99,14 +100,9 @@
 		},
 
 		mounted() {
-			//请求数据通过axios,数据用到是mock数据，用到反向代理
-			//通过json-server自建服务器，具体在mock文件夹中
-			console.log(axios);
-			console.log("pp");
 			axios.get('/vip/ticket.php')
 				.then((res) => {
 					const data = res.data.SceneryPrices[0].ChannelPriceModelEntityList;
-					//将请求到的数据赋值给dataList(data中的数据)
 					this.ticketlist = data;
 				})
 		},
@@ -125,8 +121,8 @@
 <style lang="scss" scoped="scoped">
 	@import "../../style/yo/lib/core/merge-extra";
 	@import "../../style/yo/lib/core/merge-config";
-	/*@import "../../style/yo/lib/core/function";*/
-	/*@import "../../style/yo/lib/core/classes";*/
+	@import "../../style/yo/lib/core/function";
+	@import "../../style/yo/lib/core/classes";
 	
 	.ticket {
 		width: 100%;
@@ -188,7 +184,7 @@
 						display: inline-block;
 						width: 7px;
 						height: 13px;
-						background: url(/media/images/arrow_ico.png) no-repeat;
+						background: url(../../assets/images/yimages/arrow_ico.png) no-repeat;
 						background-size: 7px 13px;
 					}
 				}
@@ -227,7 +223,7 @@
 					>span::before {
 						content: '';
 						display: inline-block;
-						background-image: url(/media/images/labelicon.png);
+						background-image: url(../../assets/images/yimages/labelicon.png);
 						background-repeat: no-repeat;
 						background-size: 11px 11px;
 						height: 11px;

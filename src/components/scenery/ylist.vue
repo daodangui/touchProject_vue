@@ -56,7 +56,6 @@
 						</div>
 					</a>
 				</li>
-				<!--</router-link>-->
 
 			</ul>
 		</div>
@@ -68,9 +67,6 @@
 </template>
 
 <script>
-	// import '../../media/images/yimages/list.jpg';
-	// import '../../media/images/yimages/list-bg.png';
-
 	import axios from 'axios'
 	export default {
 		data() {
@@ -82,10 +78,6 @@
 		},
 		methods: {
 			gotoDetail(positionId) {
-				// name别名,指代详情页 参数为函数调用传过来的参数
-				// 编程式导航，不是通过a 标签来定义导航链接，我们还可以借助 router 的实例方法，通过编写代码来实现
-				// 在 Vue 实例内部，你可以通过 $router 访问路由实例。因此你可以调用 this.$router.push。
-				//				this.$router.push("/details");
 				this.$router.push({
 					name: 'details',
 					params: {
@@ -97,24 +89,42 @@
 			change(k) {
 				this.index = k;
 				var s="#"+k;
-				console.log(s);
 				var anchor = document.querySelector(s);
-				console.log(anchor);
 				document.body.scrollTop = anchor.offsetTop; // chrome
 				document.documentElement.scrollTop = anchor.offsetTop; // firefox
 			}
 		},
 		
 		mounted() {
-			//请求数据通过axios,数据用到是mock数据，用到反向代理
-			//通过json-server自建服务器，具体在mock文件夹中
-			console.log(axios);
-			axios.get('/vip/list.php')
-				.then((res) => {
-					const data = res.data.data.SceneryList;
-					//将请求到的数据赋值给dataList(data中的数据)
-					this.dataList = data;
-				})
+			var $this = this;
+//			axios.get('/vip/list.php')
+//				.then((res) => {
+//					const data = res.data.data.SceneryList;
+//					this.dataList = data;
+//				})
+			axios.post('/bip/gateway/scenery.resource/v1/resource/scenerysrcommend/recommend/?Labrador-Token=0a905013-886c-48d7-936f-c08226227398', {
+		    		totalcount: 10,
+		    		height: 160,
+		    		width: 180,
+		    		pagesize:18,
+		    		Page: 1,
+		    		cityId: 53,
+		    		permanentcityid:"",
+		    		lon: 0,
+		    		lat: 0,
+		    		environment:2,
+		    		os: 0,
+		    		MermberId: "",
+		    		SortOrderType:2901001,
+		    		IsNeedShurtTour:1
+			})
+			.then(function (response) {
+				const data = response.data.data.SceneryList;
+				$this.dataList = data;
+			})
+			.catch(function (error) {
+			    console.log(error);
+			});
 		}
 	}
 </script>
@@ -207,6 +217,8 @@
 							.list-money {
 								width: 100%;
 								height: 0.16rem;
+								display: flex;
+								flex-direction: row;
 								.detail {
 									color: #999;
 									width: 0.95rem;

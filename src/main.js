@@ -1,4 +1,5 @@
 import Vue from 'vue';
+
 import vueRouter from 'vue-router';
 
 //引入mint-ui

@@ -1,6 +1,5 @@
 <template>
 	<div class="aa">
-
 		<div class="scenery" v-for="(n,j) in 2" :key="j">
 			<p>
 				<span v-if="n==1">相似景点</span>
@@ -9,8 +8,8 @@
 
 			<ul class="scenery-list">
 				<template v-if="n==1">
-					<li v-for="(list,i) in dataList.Scenerylist" :key="i">
-						<a href="">
+					<li v-for="(list,i) in dataList.Scenerylist" :key="i" @click="gotocollect()">
+						<a href="javascript:void(0)">
 							<img :src="list.SceneryImg" alt="" />
 							<!--<img src="/media/images/SZl7Se_150x150_00.jpg" />-->
 							<div class="scenery-info">
@@ -70,8 +69,6 @@
 </template>
 
 <script>
-	import '../../media/images/yimages/title_bg.jpg';
-	import '../../media/images/yimages/SZl7Se_150x150_00.jpg';
 	import axios from 'axios'
 	export default {
 		data() {
@@ -80,7 +77,15 @@
 				recommend :"周边推荐"
 			}
 		},
-
+		methods:{
+			gotocollect() {
+				// name别名,指代详情页 参数为函数调用传过来的参数
+				// 编程式导航，不是通过a 标签来定义导航链接，我们还可以借助 router 的实例方法，通过编写代码来实现
+				// 在 Vue 实例内部，你可以通过 $router 访问路由实例。因此你可以调用 this.$router.push。
+				//				this.$router.push("/details");
+				this.$router.push("/ycollect");
+			}
+		},
 		mounted() {
 			axios.get('/vip/dview.php')
 				.then((res) => {
@@ -109,7 +114,7 @@
 				line-height: 0.26rem;
 				height: 0.36rem;
 				padding: 0.05rem 0;
-				background: url(/media/images/title_bg.jpg) no-repeat;
+				background: url(../../assets/images/yimages/title_bg.jpg) no-repeat;
 				background-size: 3.2rem 0.36rem;
 				font-size: 0.16rem;
 				font-weight: bold;
