@@ -1,6 +1,6 @@
 <template>
 	<div class="position">
-		<ul :class="[{fixed : isfixed}]" class="listtitle">
+		<ul :class="[{fixed : isfixed}]" class="listtitle" id="a">
 			<li :class="{ active :index=='a'}" @click="change('a')">
 				<a href="javascript:void(0)">
 					<h3>当季热门</h3>

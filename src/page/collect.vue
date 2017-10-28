@@ -4,24 +4,36 @@
 			<cpt-head />
 		</header>
 		<section class="colcontent">
-			<mt-cell title="酒店收藏" to="/mycollect" :is-link="true">
-				<img slot="icon" src="../assets/iconfont/hotel.png" width="20" height="20">
-			</mt-cell>
-			<mt-cell title="游轮收藏" to="/mycollect" :is-link="true">
-				<img slot="icon" src="../assets/iconfont/cruise.png" width="20" height="20">
-			</mt-cell>
-			<mt-cell title="周边游收藏" to="/mycollect" :is-link="true">
-				<img slot="icon" src="../assets/iconfont/rim.png" width="20" height="20">
-			</mt-cell>
-			<mt-cell title="出境游收藏" to="/mycollect" :is-link="true">
-				<img slot="icon" src="../assets/iconfont/chujing.png" width="20" height="20">
-			</mt-cell>
-			<mt-cell title="国内游收藏" to="/mycollect" :is-link="true">
-				<img slot="icon" src="../assets/iconfont/guoneiyou.png" width="20" height="20">
-			</mt-cell>
-			<mt-cell title="海外玩乐收藏" to="/mycollect" :is-link="true">
-				<img slot="icon" src="../assets/iconfont/haiwaiyou.png" width="20" height="20">
-			</mt-cell>
+			<div @click="tomycollect(titles[0])">
+				<mt-cell :title="titles[0]"  :is-link="true">
+					<img slot="icon" src="../assets/iconfont/hotel.png" width="20" height="20">
+				</mt-cell>
+			</div>
+			<div @click="tomycollect(titles[1])">
+				<mt-cell :title="titles[1]" :is-link="true">
+					<img slot="icon" src="../assets/iconfont/cruise.png" width="20" height="20">
+				</mt-cell>
+			</div>
+			<div @click="tomycollect(titles[2])">
+				<mt-cell :title="titles[2]" :is-link="true">
+					<img slot="icon" src="../assets/iconfont/rim.png" width="20" height="20">
+				</mt-cell>
+			</div>
+			<div @click="tomycollect(titles[3])">
+				<mt-cell :title="titles[3]" :is-link="true">
+					<img slot="icon" src="../assets/iconfont/chujing.png" width="20" height="20">
+				</mt-cell>
+			</div>
+			<div @click="tomycollect(titles[4])">
+				<mt-cell :title="titles[4]" :is-link="true">
+					<img slot="icon" src="../assets/iconfont/guoneiyou.png" width="20" height="20">
+				</mt-cell>
+			</div>
+			<div @click="tomycollect(titles[5])">
+				<mt-cell :title="titles[5]" :is-link="true">
+					<img slot="icon" src="../assets/iconfont/haiwaiyou.png" width="20" height="20">
+				</mt-cell>
+			</div>
 		</section>
 	</div>
 </template>
@@ -35,15 +47,28 @@ export default{
 			ani: {
 				'ani': true,
 				'elastic-in-right': true
-			}
+			},
+			titles: ['酒店收藏','游轮收藏','周边游收藏','出境游收藏','国内游收藏','海外玩乐收藏']
 		}
 	},
 	components: {
 		'cpt-head': cptHead
 	},
+	methods: {
+		tomycollect(title){
+			this.$router.push('/mycollect')
+			this.$store.commit('pushTitle', {
+				title: title,
+				route: '/mycollect'
+			})
+		}
+	},
 	created(){
 		document.documentElement.style.fontSize = '31.25vw'
-	}
+	},
+	// destroyed(){
+		// this.$store.commit('changeTitle', '我的同程')
+	// }
 }
 	
 </script>

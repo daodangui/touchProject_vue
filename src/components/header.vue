@@ -10,9 +10,9 @@
 				</div>
 				<input type="text" placeholder="目的地/酒店/景点/关键字">
 			</div>
-			<router-link tag="div" to="/memberPage" class="headMy">
+			<div @click="toMemberPage()" class="headMy">
 				<i class="yo-ico">&#xe602;</i>
-			</router-link>
+			</div>
 		</div>
 	</div>
 </template>
@@ -23,6 +23,15 @@ export default {
 	data(){
 		return {
 
+		}
+	},
+	methods: {
+		toMemberPage(){
+			this.$router.push('/memberPage')
+			this.$store.commit('pushTitle', {
+				title: '我的同程',
+				route: '/memberPage'
+			})
 		}
 	}
 }

@@ -42,11 +42,11 @@
 				</a>
 			</div>
 			<div class="menubar">
-				<router-link to="/collect" tag="a" href="javascript:void(0)" >
+				<a @click="toCollect()" href="javascript:void(0)" >
 					<i class="yo-ico">&#xe68b;</i>
 					<span>我的收藏</span>
 					<i class="yo-ico">&#xe601;</i>
-				</router-link>
+				</a>
 			</div>
 			<div class="menubar">
 				<a href="">
@@ -65,6 +65,15 @@ export default {
 	data(){
 		return {
 
+		}
+	},
+	methods: {
+		toCollect(){
+			this.$router.push('/collect')
+			this.$store.commit('pushTitle', {
+				title: '我的收藏',
+				route: '/collect'
+			})
 		}
 	}
 }

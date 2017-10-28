@@ -27,13 +27,14 @@
 			</section>
 		</div>
 		<footer>
-			
+			<cpt-foot></cpt-foot>
 		</footer>
 	</div>
 </template>
 
 <script>
-	
+import cptfoot from '../components/member/memberfoot.vue'
+
 export default{
 	data(){
 		return {
@@ -43,6 +44,9 @@ export default{
 			phone: '',
 			number: ''
 		}
+	},
+	components: {
+		'cpt-foot': cptfoot
 	},
 	methods: {
 		toRegister(){
@@ -94,4 +98,10 @@ export default{
 		}
 	}
 }
+	footer{
+		position: absolute;
+		width: 100%;
+		bottom: 0rem;
+		margin-bottom: .1rem;
+	}
 </style>

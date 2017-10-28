@@ -4,11 +4,11 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 //引入Vuex模块
-import collect from './modules/collect';
+import headTitle from './modules/headTitle';
 
 const store = new Vuex.Store({
 	modules: {
-		collect
+		headTitle
 	}
 });
 

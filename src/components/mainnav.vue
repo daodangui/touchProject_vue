@@ -8,7 +8,7 @@
 					</template>
 					<template v-else>
 						<template v-if="n == 1 && i == 1">
-							<router-link tag="a" to="/scenery" :style="getbgurl()">{{getHomenav()}}</router-link>
+							<a @click="toScenery()" :style="getbgurl()">{{getHomenav()}}</a>
 							<a href="" :style="getbgurl()">{{getHomenav()}}</a>
 						</template>
 						<template v-else>
@@ -71,6 +71,13 @@ export default {
 				backgroundImage: 'url('+this.bgurl[t++]+')',
 				backgroundSize: '100% 100%'
 			}
+		},
+		toScenery(){
+			this.$router.push('/scenery')
+			this.$store.commit('pushTitle', {
+				title: '景点门票',
+				route: '/scenery'
+			})
 		}
 	}
 }

@@ -2,6 +2,8 @@ import Vue from 'vue';
 
 import vueRouter from 'vue-router';
 
+import store from './store/index.js';
+
 //引入mint-ui
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css'
@@ -20,5 +22,6 @@ const router = new vueRouter({
 });
 
 new Vue({
-	router
+	router,
+	store
 }).$mount('#body')

@@ -1,8 +1,8 @@
 <template lang="html">
 	<div id="headContent">
 		<div class="show">
-			<a class="page-back"></a>
-			<h2>景点门票</h2>
+			<a @click="backTo()" href="javascript:void(0)" class="page-back"></a>
+			<h2>{{this.$store.state.headTitle.titles[this.$store.state.headTitle.titles.length-1].title}}</h2>
 			<a class="header-menu" @click="show()">
 				<i class="yo-ico">&#xe634;</i>
 			</a>
@@ -41,6 +41,10 @@
 		methods:{
 			show(){
 				this.isShow=!this.isShow;
+			},
+			backTo(){
+				this.$store.commit('popTitle');
+				this.$router.push(this.$store.state.headTitle.titles[this.$store.state.headTitle.titles.length-1].route);
 			}
 		}
 	}
