@@ -55,7 +55,7 @@ export default [
 		name : 'details'
 	},
 	{
-		path: '/ycollect/:list',
+		path: '/ycollect',
 		component: ycollect,
 		name : 'ycollect'
 	}

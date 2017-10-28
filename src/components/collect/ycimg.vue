@@ -1,10 +1,20 @@
 <template>
-	<div class="img">
-		<img src="../../assets/images/yimages/hotel-left.jpg"/>		
+	<div class="img" v-if="data">
+		<img :src="data.PictureUrl" alt="" />
 	</div>
 </template>
 
 <script>
+	export default {
+		data() {
+			return {
+				data : null
+			}
+		},
+		mounted() {
+			this.data = this.$store.state.a.list[0];
+		}
+	}
 </script>
 
 <style lang="scss" scoped="scoped">

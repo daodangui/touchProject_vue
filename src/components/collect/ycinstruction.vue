@@ -1,17 +1,19 @@
 <template>
-	<div class="instruction">
+	<div class="instruction" v-if="data">
 		<div class="hotel" v-for="(list,i) in datalist" :key="i">
 			<div class="hotel-content">
 				<h6>
-					<img :src="list.pic" alt="" />
+					<!--<img :src="list.pic" alt="" />-->
+					<img :src="data.PictureUrl" alt="" />
 					<span>{{list.title}}</span>
 				</h6>
 				<div class="hotel-bottom">
 					<div class="left">
-					<img :src="list.Img" alt="" />
+					<!--<img :src="list.Img" alt="" />-->
+					<img :src="data.PictureUrl" alt="" />
 					</div>
 					<div class="right">
-						<p>{{list.Comment}}</p>
+						<p>{{data.Name}}</p>
 						<p v-show="i==1" class="hide"> 
 							开园时间：10:00-21:00
 						</p>
@@ -44,7 +46,8 @@
 						"Comment": "南宫温泉",
 						"position":"北京市丰台区王佐镇福宫路39号"
 					}
-				]
+				],
+				data : null
 			}
 		},
 		methods: {
@@ -54,7 +57,7 @@
 			document.documentElement.style.fontSize = '31.25vw';
 		},
 		mounted() {
-
+			this.data = this.$store.state.a.list[0];
 		}
 	}
 	
@@ -115,6 +118,9 @@
 							overflow: hidden;
 							white-space: nowrap;
 							text-overflow: ellipsis;
+							width: 2.1rem;
+							height: 0.22rem;
+							
 						}
 						div {
 							margin-top: 0.43rem;

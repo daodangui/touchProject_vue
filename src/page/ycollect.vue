@@ -34,7 +34,7 @@
 	export default {
 		data() {
 			return {
-				 list: this.$route.params.list
+//				 list: this.$route.params.list
 			}
 		},
 		methods: {
@@ -44,7 +44,7 @@
 			document.documentElement.style.fontSize = '31.25vw';
 		},
 		mounted() {
-			console.log(this.list);
+//			console.log(this.list);
 		},
 		components: {
 			'y-header': yheader,

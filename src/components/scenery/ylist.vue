@@ -97,11 +97,6 @@
 		
 		mounted() {
 			var $this = this;
-//			axios.get('/vip/list.php')
-//				.then((res) => {
-//					const data = res.data.data.SceneryList;
-//					this.dataList = data;
-//				})
 			axios.post('/bip/gateway/scenery.resource/v1/resource/scenerysrcommend/recommend/?Labrador-Token=0a905013-886c-48d7-936f-c08226227398', {
 		    		totalcount: 10,
 		    		height: 160,

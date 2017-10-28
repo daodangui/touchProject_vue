@@ -67,6 +67,12 @@
 					title: "温馨提示",
 					message: "添加收藏成功"
 				});
+				
+//				console.log(this.$store.state.a.list);
+				var obj = this.$store.state.a.list
+				
+				this.$store.commit("addshowlist",obj);
+				console.log(this.$store.state.b.showlist)
 			},
 			show() {
 				this.isshow=!this.isshow;

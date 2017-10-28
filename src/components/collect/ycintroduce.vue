@@ -1,10 +1,12 @@
 <template>
-	<div class="introduce">
+	<div class="introduce"  v-if="data">
 		<div class="choose">
 			<div class="content">
 				<h6>自选酒店<em class="hui-icon">惠</em></h6>
 				<div class="free">
-					<span class="hotel">北京龙脉温泉度假村</span>
+					<!--<span class="hotel">北京龙脉温泉度假村</span>-->
+					<span class="hotel">{{data.Name}}</span>
+					
 					<span class="group">自由组合</span>
 				</div>
 			</div>
@@ -15,7 +17,7 @@
 				<h6>标准双床亲子套餐</h6>
 				<p>标准双床间</p>
 				<div class="price">
-					<i>¥<span>628</span></i>起/份
+					<i>¥<span>{{data.Pirce}}</span></i>起/份
 				</div>
 
 				<div class="discount">
@@ -28,6 +30,18 @@
 </template>
 
 <script>
+	export default {
+		data() {
+			return {
+				data : null
+			}
+		},
+		methods:{
+		},
+		mounted() {
+			this.data = this.$store.state.a.list[0];
+		}
+	}
 </script>
 
 <style lang="scss" scoped="scoped">
@@ -81,15 +95,13 @@
 						overflow: hidden;
 						white-space: nowrap;
 						text-overflow: ellipsis;
+						width: 2.2rem;
 					}
 					.group {
 						display: inline-block;
-						/*position: absolute;*/
-						/*right: .15rem;*/
-						/*bottom: .2rem;*/
 						font-size: .14rem;
 						color: #fff;
-						padding: .05rem .14rem;
+						padding: .05rem .05rem;
 						background: #ff6815;
 						border-radius: 6px;
 					}
