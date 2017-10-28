@@ -8,7 +8,9 @@ export default {
      		state.showlist.push(obj);
    		},
    		removeshowlist(state) {
-     		state.showlist.pop();
+   			var a=state.showlist.length
+   			console.log(a);
+     		state.showlist.splice(a-1,1);
    		},
 	}
 }
