@@ -1,5 +1,8 @@
 <template>
 	<div class="position">
+		<div class="wrap">
+			
+		
 		<ul v-bind:class="{ guding: isActive }" id="a">
 			<li :class="{ active :index=='a'}" @click="change('a')">
 				<a href="javascript:void(0)">
@@ -17,6 +20,8 @@
 				</a>
 			</li>
 		</ul>
+
+	</div>
 
 		<div class="list">
 			<ul v-if="dataList">
@@ -150,6 +155,10 @@
 	.position {
 		width: 100%;
 		background: white;
+		.wrap{
+			width: 100%;
+			height: 0.4rem;
+		
 		>ul.guding {
 			position: absolute;
 			top: 0;
@@ -186,6 +195,7 @@
 				color: #23beae;
 				border-bottom: 3px solid #23beae;
 			}
+		}
 		}
 		.list {
 			width: 100%;

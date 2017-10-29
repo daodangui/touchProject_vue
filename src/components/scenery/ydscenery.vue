@@ -87,7 +87,7 @@
 			}
 		},
 		mounted() {
-			axios.get('/vip/dview.php')
+			axios.get('/aaa/dview.php')
 				.then((res) => {
 					const data = res.data;
 					this.dataList = data;

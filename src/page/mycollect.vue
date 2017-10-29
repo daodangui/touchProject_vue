@@ -42,6 +42,7 @@
 
 <script>
 import cptHead from '@/components/scenery/yheader.vue';
+import Mint from 'mint-ui';
 
 export default {
 	data(){
@@ -59,6 +60,10 @@ export default {
 			this.$messagebox('移除该条收藏').then(function(){
 				$this.items.splice(index, 1)
 				$this.$store.state.b.showlist.splice(index, 1)
+				Mint.Toast({
+				  message: '操作成功',
+				  iconClass: 'fa fa-check'
+				});
 			});
 		}
 	},

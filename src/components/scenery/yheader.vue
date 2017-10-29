@@ -9,17 +9,17 @@
 		</div>
 
 		<div class="hide" v-if="isShow">
-			<a class="home">
+			<a class="home" href="javascript:void(0)" @click="toLink('/')">
 				<i></i>
 				<span>首页</span>
 			</a>
 
-			<a class="home">
+			<a class="home" href="javascript:void(0)" @click="toLink('/memberPage')">
 				<i></i>
 				<span>我的同程</span>
 			</a>
 
-			<a class="home">
+			<a class="home" href="javascript:void(0)" @click="toLink('/login')">
 				<i></i>
 				<span>登录/注册</span>
 			</a>
@@ -43,6 +43,24 @@
 				this.$store.commit('popTitle');
 				this.$router.push(this.$store.state.headTitle.titles[this.$store.state.headTitle.titles.length-1].route);
 				this.$store.commit('removelist');
+			},
+			toLink: function(route){
+				switch (route){
+					case '/': {
+						this.$store.commit('pushTitle', '首页');
+						break;
+					}
+					case '/memberPage': {
+						this.$store.commit('pushTitle', '我的同程');
+						break;
+					}
+					case '/login': {
+						this.$store.commit('pushTitle', '登录');
+						break;
+					}
+				}
+				this.$store.commit('removelist');
+				this.$router.push(route)
 			}
 		},
 		mounted() {

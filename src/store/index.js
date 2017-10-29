@@ -7,12 +7,14 @@ Vue.use(Vuex);
 import headTitle from './modules/headTitle';
 import collect from './modules/collect';
 import show from './modules/show';
-import user from './modules/user'
+import user from './modules/user';
+import search from './modules/search';
 
 const store = new Vuex.Store({
 	modules: {
 		headTitle,
 		user,
+		search,
 		a:collect,
 		b:show,
 	},
