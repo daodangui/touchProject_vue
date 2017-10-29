@@ -18,7 +18,7 @@ Vue.use(vueRouter);
 Vue.use(Mint);
 
 const router = new vueRouter({
-  routes
+	routes
 });
 
 new Vue({

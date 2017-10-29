@@ -1,6 +1,6 @@
 <template>
-	<div class="position" :scrollTop.prop="topvalue">
-		<ul :class="[{fixed : isfixed}]" class="listtitle" id="a">
+	<div class="position">
+		<ul v-bind:class="{ guding: isActive }" id="a">
 			<li :class="{ active :index=='a'}" @click="change('a')">
 				<a href="javascript:void(0)">
 					<h3>当季热门</h3>
@@ -13,14 +13,13 @@
 			</li>
 			<li :class="{active:index=='c'}" @click="change('c')">
 				<a href="javascript:void(0)">
-					<h3>酒景套餐</h3>
+					<h3>周边景点</h3>
 				</a>
 			</li>
 		</ul>
 
 		<div class="list">
-			<ul>
-
+			<ul v-if="dataList">
 				<li v-for="(list,i) in dataList" :key="i" @click="gotoDetail(list)">
 					<a href="javascript:void(0)">
 						<div class="list-left">
@@ -56,8 +55,13 @@
 						</div>
 					</a>
 				</li>
-
 			</ul>
+			
+			
+			<div class="yo-loading" v-if="!dataList">
+				<i class="yo-ico"></i>
+				<div class="text">加载中...</div>
+			</div>
 		</div>
 
 		<div class="hot-bottom">
@@ -71,10 +75,11 @@
 	export default {
 		data() {
 			return {
-				dataList: [],
+				dataList: null,
 				index: "a",
 				isfixed : false,
-				topvalue : 0
+				topvalue : 0,
+				isActive: false
 			}
 		},
 		methods: {
@@ -86,51 +91,73 @@
 					}
 				});
 			},
-
 			change(k) {
 				this.index = k;
-				var s="#"+k;
+				var s = "#" + k;
 				var anchor = document.querySelector(s);
 				document.body.scrollTop = anchor.offsetTop; // chrome
 				document.documentElement.scrollTop = anchor.offsetTop; // firefox
-				this.topvalue = 500
+			},
+			check() {
+				var $this=this;
+				window.addEventListener('scroll', function() {
+					var a = document.body.scrollTop;
+					if(a > 589) {
+						$this.isActive = true;
+					} else {
+						$this.isActive = false;
+					}
+				}, true)
 			}
 		},
-		
 		mounted() {
 			var $this = this;
 			axios.post('/bip/gateway/scenery.resource/v1/resource/scenerysrcommend/recommend/?Labrador-Token=0a905013-886c-48d7-936f-c08226227398', {
-		    		totalcount: 10,
-		    		height: 160,
-		    		width: 180,
-		    		pagesize:18,
-		    		Page: 1,
-		    		cityId: 53,
-		    		permanentcityid:"",
-		    		lon: 0,
-		    		lat: 0,
-		    		environment:2,
-		    		os: 0,
-		    		MermberId: "",
-		    		SortOrderType:2901001,
-		    		IsNeedShurtTour:1
-			})
-			.then(function (response) {
-				const data = response.data.data.SceneryList;
-				$this.dataList = data;
-			})
-			.catch(function (error) {
-			    console.log(error);
-			});
+					totalcount: 10,
+					height: 160,
+					width: 180,
+					pagesize: 18,
+					Page: 1,
+					cityId: 53,
+					permanentcityid: "",
+					lon: 0,
+					lat: 0,
+					environment: 2,
+					os: 0,
+					MermberId: "",
+					SortOrderType: 2901001,
+					IsNeedShurtTour: 1
+				})
+				.then(function(response) {
+					const data = response.data.data.SceneryList;
+					$this.dataList = data;
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
+			this.check();
 		}
 	}
 </script>
 
 <style lang="scss" scoped="scoped">
+	@import "../../style/yo/lib/core/merge-extra";
+	@import "../../style/yo/lib/core/merge-config";
+	@import "../../style/yo/lib/core/function";
+	@import "../../style/yo/lib/core/classes";
+	@import "../../style/yo/lib/element/yo-loading.scss";
+	
 	.position {
 		width: 100%;
 		background: white;
-		.listtitle {
+		>ul.guding {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 999999;
+			background: white;
+		}
+		>ul {
 			width: 100%;
 			height: 0.4rem;
 			border-bottom: solid 1px #ddd;

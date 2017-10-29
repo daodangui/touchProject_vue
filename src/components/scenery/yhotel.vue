@@ -4,7 +4,7 @@
 			<span>精选酒景套餐</span>
 		</div>
 
-		<ul class="hotel-list">
+		<ul class="hotel-list" v-if="dataList">
 			<li v-for="(list,i) in dataList" :key="i" @click="gotocollect(list)">
 				<a href="javascript:void(0)">
 					<div class="hotel-left">
@@ -36,6 +36,12 @@
 				</a>
 			</li>
 		</ul>
+		
+		
+		<div class="yo-loading" v-if="!dataList">
+				<i class="yo-ico"></i>
+				<div class="text">加载中...</div>
+		</div>
 	</div>
 </template>
 
@@ -44,7 +50,7 @@
 	export default {
 		data() {
 			return {
-				dataList: []
+				dataList: null
 			}
 		},
 		methods: {
@@ -61,7 +67,6 @@
 					route: '/ycollect'
 				});
 				this.$router.push("/ycollect");
-//				console.log(this.$store.state.a.list);
 			},
 		},
 		mounted() {
@@ -94,6 +99,12 @@
 </script>
 
 <style lang="scss" scoped="scoped">
+@import "../../style/yo/lib/core/merge-extra";
+	@import "../../style/yo/lib/core/merge-config";
+	@import "../../style/yo/lib/core/function";
+	@import "../../style/yo/lib/core/classes";
+	@import "../../style/yo/lib/element/yo-loading.scss";
+	
 	.hotel {
 		width: 100%;
 		.hotel-title {

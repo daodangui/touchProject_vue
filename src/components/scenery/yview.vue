@@ -4,8 +4,7 @@
 			<span>精选周边景点</span>
 		</div>
 		<div class="list">
-			<ul>
-				
+			<ul v-if="dataList">
 				<li v-for="(list,i) in dataList" :key="i">
 					<a href="">
 						<div class="list-left">
@@ -43,9 +42,12 @@
 						</div>
 					</a>
 				</li>
-				
-				
 			</ul>
+			
+			<div class="yo-loading" v-if="!dataList">
+				<i class="yo-ico"></i>
+				<div class="text">加载中...</div>
+			</div>
 		</div>
 
 
@@ -57,25 +59,16 @@
 </template>
 
 <script>
-	// import '../../media/images/yimages/view.jpg';
-	// import '../../media/images/yimages/list-bg.png';
-
 	import axios from 'axios'
 	export default {
 		data() {
 			return {
-				dataList: [],
-				//				isShowloading: true
+				dataList: null,
 			}
 		},
 
 		mounted() {
 			var $this = this;
-//			axios.get('/vip/view.php')
-//				.then((res) => {
-//					const data = res.data.data.SceneryList;
-//					this.dataList = data;
-//				})
 			axios.post('/bip/gateway/scenery.resource/v1/resource/scenerysrcommend/nearcityscenery/?Labrador-Token=0a905013-886c-48d7-936f-c08226227398', {
 		    		totalcount: 10,
 		    		height: 160,
@@ -93,9 +86,8 @@
 		    		IsNeedShurtTour:1
 			})
 			.then(function (response) {
-				//与源数据不对口
 				const data = response.data.data.SceneryList;
-					$this.dataList = data;
+				$this.dataList = data;
 			})
 			.catch(function (error) {
 			    console.log(error);
@@ -105,6 +97,11 @@
 </script>
 
 <style lang="scss" scoped="scoped">
+	@import "../../style/yo/lib/core/merge-extra";
+	@import "../../style/yo/lib/core/merge-config";
+	@import "../../style/yo/lib/core/function";
+	@import "../../style/yo/lib/core/classes";
+	@import "../../style/yo/lib/element/yo-loading.scss";
 	.position {
 		width: 100%;
 		background: white;
