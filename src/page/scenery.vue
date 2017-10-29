@@ -1,42 +1,25 @@
 <template>
 	<div class="scenery">
 		<!--头部-->
-		<template>
-			<y-header></y-header>
-		</template>
+		<y-header></y-header>
 		<!--搜索项和图片-->
-		<template>
-			<y-search></y-search>
-		</template>
+		<y-search></y-search>
 
-		<template>
-			<!--单个项，推荐-->
-			<y-closest></y-closest>
-		</template>
-
+		<!--单个项，推荐-->
+		<y-closest></y-closest>
 		<!--三项合并-->
-		<template>
-			<y-scenery></y-scenery>
-		</template>
+		<y-scenery></y-scenery>
 
 		<!--景色列表项，获取数据-->
-		<template>
-			<y-list></y-list>
-		</template>
+		<y-list></y-list>
 
 		<!--酒店列表项，获取数据-->
-		<template>
-			<y-hotel></y-hotel>
-		</template>
+		<y-hotel></y-hotel>
 
 		<!--jingse列表项，获取数据-->
-		<template>
-			<y-view></y-view>
-		</template>
+		<y-view></y-view>
 
-		<template>
-			<y-bottom></y-bottom>
-		</template>
+		<y-bottom></y-bottom>
 	</div>
 </template>
 
@@ -53,19 +36,23 @@
 	export default {
 		data() {
 			return {
-				posid: 3,
-				isActive: true,
-				errorClass: 'error'
+				scroll: ''
 			}
 		},
 		methods: {
-
+			menu() {
+				this.scroll = document.body.scrollTop;
+				console.log(this.scroll)
+			}
 		},
-		created(){
+		created() {
 			document.documentElement.style.fontSize = '31.25vw';
 		},
 		mounted() {
-
+//			window.addEventListener('scroll', function(){
+//				var a = document.body.scrollTop;
+////				if()
+//			},true)
 		},
 		components: {
 			'y-header': yheader,

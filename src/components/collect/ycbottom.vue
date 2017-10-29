@@ -70,7 +70,7 @@
 						title: "温馨提示",
 						message: "添加收藏成功"
 					});
-					var obj = this.$store.state.a.list
+					var obj = this.$store.state.a.list[0];
 					this.$store.commit("addshowlist",obj);
 					console.log(this.$store.state.b.showlist)
 				}else{
