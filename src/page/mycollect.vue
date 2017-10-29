@@ -4,30 +4,12 @@
 			<cpt-head />
 		</header>
 		<section class="mycolcontent">
-			<!-- <mt-cell-swipe v-for="item in this.$store.state.b.showList" class="iteminfo"
+			<mt-cell-swipe v-for="(item, index) in items" class="iteminfo"
 			  :key="item.id"
-			  title="北京稻香湖景酒店"
-			  label="【快乐童心】2大1小尽享亲子DIY2大1小尽享亲子DIY2大1小尽享亲子DIY2大1小尽享亲子DIY2大1小尽享亲子DIY"
-			  :right="rightinfo" >
-				<slot>
-					<span class="price"><span>￥</span><span>399</span><span>起</span></span>
-				</slot>
-			 </mt-cell-swipe> -->
-		</section>
-	</div>
-</template>
-
-<script>
-import cptHead from '@/components/scenery/yheader.vue';
-
-export default {
-	data(){
-		return {
-			ani: {
-				'ani': true,
-				'elastic-in-right': true
-			},
-			rightinfo: [
+			  :title="item.title"
+			  :label="item.label.join(' ')"
+			  :value="item.id"
+			  :right="[
 				{
 					content: '预订',
 					style: {
@@ -45,9 +27,39 @@ export default {
 						textAlign: 'center',
 						color: '#fff'
 			      },
-			      handler: () => this.$messagebox('移除该条收藏')
+			      handler(){
+			      	delitem(index)
+			      }
 			    }
-			]
+			]"> 
+				<slot>
+					<span class="price"><span>￥</span><span>{{item.price}}</span><span>起</span></span>
+				</slot>
+			 </mt-cell-swipe>
+		</section>
+	</div>
+</template>
+
+<script>
+import cptHead from '@/components/scenery/yheader.vue';
+
+export default {
+	data(){
+		return {
+			ani: {
+				'ani': true,
+				'elastic-in-right': true
+			},
+			items: []
+		}
+	},
+	methods: {
+		delitem(index){
+			var $this = this;
+			this.$messagebox('移除该条收藏').then(function(){
+				$this.items.splice(index, 1)
+				$this.$store.state.b.showlist.splice(index, 1)
+			});
 		}
 	},
 	components: {
@@ -55,7 +67,20 @@ export default {
 	},
 	created(){
 		document.documentElement.style.fontSize = '31.25vw'
-		console.log(this.$store.state.b.showList);
+	},
+	mounted(){
+		var $this = this;
+		this.$store.state.b.showlist.forEach(function(value){
+			var item = {
+				title: value.Name,
+				label: value.Tag.map(function(value){
+					return value.Name;
+				}),
+				price: value.Pirce
+			}
+			$this.items.push(item);
+		})
+		console.log($this.items);
 	}
 }
 </script>
@@ -81,6 +106,11 @@ export default {
 	.mycolcontent{
 		padding-top: .15rem;
 		.mint-cell-label{
+			display: inline-block;
+			@include wrap(false);
+			@include ellipsis(2.2rem, 1);
+		}
+		.mint-cell-text{
 			display: inline-block;
 			@include wrap(false);
 			@include ellipsis(2.2rem, 1);

@@ -2,9 +2,18 @@
 	<div class="login">
 		<div>
 			<dl>
-				<dt class="avatar"></dt>
+				<dt class="avatar">
+					<img v-if="this.$store.state.user.login" src="https://pic4.40017.cn/member/face/2015/08/31/14/jNDStn_90x90_00.png" alt="">
+					<img v-else src="https://pic4.40017.cn/index/slide/2017/02/14/16/RUUZTh.png" alt="">
+				</dt>
 				<dd>
-					<a @click="toLogin()" href="javascript:void(0)">登录</a>/<a @click="routerToregister()" href="javascript:void(0)">注册</a>
+					<template v-if="this.$store.state.user.login">
+						<a href="javascript:void(0)">{{this.$store.state.user.username}}</a>
+						<span class="userTag">普卡会员</span>
+					</template>
+					<template v-else>
+						<a @click="toLogin()" href="javascript:void(0)">登录</a>/<a @click="routerToregister()" href="javascript:void(0)">注册</a>	
+					</template>
 				</dd>
 			</dl>
 		</div>
@@ -26,9 +35,17 @@ export default {
 	},
 	methods: {
 		routerToregister(){
+			this.$store.commit('pushTitle', {
+				title: '会员注册',
+				route: '/register'
+			})
 			this.$router.push('/register')
 		},
 		toLogin(){
+			this.$store.commit('pushTitle', {
+				title: '会员登录',
+				route: '/login'
+			})
 			this.$router.push('/login')
 		}
 	}
@@ -54,8 +71,14 @@ export default {
 			.avatar{
 				width: .6rem;
 				height: .6rem;
+				overflow: hidden;
 				@include border-radius(.6rem);
-				background: url(https://pic4.40017.cn/index/slide/2017/02/14/16/RUUZTh.png) no-repeat -.3rem -.3rem;
+				img{
+					position: relative;
+					width: .7rem;
+					left: -.05rem;
+					top: -.05rem;
+				}
 			}
 			dd,dt{
 				display: inline-block;
@@ -66,8 +89,17 @@ export default {
 				font-size: .2rem;
 				a{
 					color: #fff;
-					line-height: .6rem;
-
+					line-height: .3rem;
+				}
+				.userTag{
+					display: block;
+					height: .15rem;
+					line-height: .17rem;
+					font-size: .1rem;
+					color: #fff;
+					padding: 0rem .08rem;
+					background-color: #009999;
+					@include border-radius(.5rem)
 				}
 			}
 		}

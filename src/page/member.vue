@@ -56,9 +56,13 @@ export default {
 @import "../style/yo/lib/core/reset";
 
 #container{
+	height: 100%;
 	#header{
 		height: .44rem;
 		background: #fff;
+	}
+	footer{
+		position: static;
 	}
 }
 

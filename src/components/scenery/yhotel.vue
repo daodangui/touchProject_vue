@@ -55,12 +55,12 @@
 //						list: list
 //					}
 //				});
-				this.$router.push("/ycollect");
 				this.$store.commit("addlist",list);
 				this.$store.commit('pushTitle', {
 					title: '线路详情',
 					route: '/ycollect'
 				});
+				this.$router.push("/ycollect");
 //				console.log(this.$store.state.a.list);
 			},
 		},

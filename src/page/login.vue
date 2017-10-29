@@ -13,14 +13,14 @@
 					   	<mt-field placeholder="请输入手机号码或邮箱" v-model="username"></mt-field>
 						<mt-field placeholder="请输入密码" type="password" v-model="password"></mt-field>
 
-						<mt-button type="danger" class="loginBtn">登录</mt-button>
+						<mt-button type="danger" class="loginBtn" @click.native="dologin">登录</mt-button>
 						<p><a href="javascript:void(0)">忘记密码？</a><a href="javascript:void(0)" @click="toRegister">注册</a></p>
 				  </mt-tab-container-item>
 				  <mt-tab-container-item id="2">
 				    	<mt-field placeholder="请输入手机号码" v-model="phone"></mt-field>
 						<mt-field placeholder="请输入手机验证码" type="number" v-model="number"></mt-field>
 
-						<mt-button type="danger" class="loginBtn">登录</mt-button>
+						<mt-button type="danger" class="loginBtn" @click.native="dologin">登录</mt-button>
 						<p><a href="javascript:void(0)" @click="toRegister">注册</a></p>
 				  </mt-tab-container-item>
 				</mt-tab-container>
@@ -34,6 +34,7 @@
 
 <script>
 import cptfoot from '../components/member/memberfoot.vue'
+import axios from 'axios';
 
 export default{
 	data(){
@@ -50,7 +51,38 @@ export default{
 	},
 	methods: {
 		toRegister(){
+			this.$store.commit('pushTitle', {
+				title: '会员注册',
+				route: '/register'
+			})
 			this.$router.push('/register');
+		},
+		dologin(){
+			var $this = this;
+			axios.get('/dologin', {
+			    params: {
+			    	username: $this.username,
+			    	password: $this.password
+			    }
+			})
+			.then(function (response) {
+				if(response.data == true){
+					$this.$store.commit('changeLoginState', {
+						login: true,
+						username: $this.username
+					})
+					$this.$store.commit('pushTitle',{
+						title: '首页',
+						route: '/'
+					})
+					$this.$router.push('/')
+				}else{
+					$this.messagebox('用户名或密码错误,请重新输入');
+				}
+			})
+			.catch(function (error) {
+			    console.log(error);
+			});
 		}
 	},
 	created(){

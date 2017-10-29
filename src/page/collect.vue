@@ -56,11 +56,11 @@ export default{
 	},
 	methods: {
 		tomycollect(title){
-			this.$router.push('/mycollect')
 			this.$store.commit('pushTitle', {
 				title: title,
 				route: '/mycollect'
 			})
+			this.$router.push('/mycollect')
 		}
 	},
 	created(){

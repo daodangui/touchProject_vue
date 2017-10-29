@@ -1,5 +1,5 @@
 <template>
-	<div class="position">
+	<div class="position" :scrollTop.prop="topvalue">
 		<ul :class="[{fixed : isfixed}]" class="listtitle" id="a">
 			<li :class="{ active :index=='a'}" @click="change('a')">
 				<a href="javascript:void(0)">
@@ -73,7 +73,8 @@
 			return {
 				dataList: [],
 				index: "a",
-				isfixed : false
+				isfixed : false,
+				topvalue : 0
 			}
 		},
 		methods: {
@@ -90,10 +91,9 @@
 				this.index = k;
 				var s="#"+k;
 				var anchor = document.querySelector(s);
-				// document.body.scrollTop = anchor.offsetTop; // chrome
-				// document.documentElement.scrollTop = anchor.offsetTop; // firefox
-				document.querySelector('#body').scrollTop = anchor.offsetTop;
-				console.log(anchor.offsetTop);
+				document.body.scrollTop = anchor.offsetTop; // chrome
+				document.documentElement.scrollTop = anchor.offsetTop; // firefox
+				this.topvalue = 500
 			}
 		},
 		

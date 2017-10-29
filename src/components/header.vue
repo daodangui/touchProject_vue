@@ -27,11 +27,11 @@ export default {
 	},
 	methods: {
 		toMemberPage(){
-			this.$router.push('/memberPage')
 			this.$store.commit('pushTitle', {
 				title: '我的同程',
 				route: '/memberPage'
 			})
+			this.$router.push('/memberPage')
 		}
 	}
 }

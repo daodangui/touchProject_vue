@@ -47,11 +47,11 @@ module.exports = {
             }
         },
         '/dologin': {
-            target: 'http://localhost:8080/officemateGit/',
+            target: 'http://10.9.164.43:8080/officemateGit/',
             changeOrigin: true
         },
         '/doregister': {
-            target: 'http://localhost:8080/officemateGit/',
+            target: 'http://10.9.164.43:8080/officemateGit/',
             changeOrigin: true
         },
 			

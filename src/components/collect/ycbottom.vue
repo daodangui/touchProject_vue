@@ -1,14 +1,14 @@
 <template>
 	<div class="bottom">
 		<div class="left" @click="consult()" :class="{active : !isactive}">
-			<i class="yo-ico">&#xe662;</i>
+			<i class="yo-ico">&#xe604;</i>
 			<span>
 				收藏
 			</span>
 		</div>
 
 		<div class="right" @click="show()">
-			<i class="yo-ico">&#xe61a;</i>
+			<i class="yo-ico">&#xe662;</i>
 			<span>
 				客服
 			</span>
@@ -70,7 +70,7 @@
 						title: "温馨提示",
 						message: "添加收藏成功"
 					});
-					var obj = this.$store.state.a.list
+					var obj = this.$store.state.a.list[0]
 					this.$store.commit("addshowlist",obj);
 					console.log(this.$store.state.b.showlist)
 				}else{

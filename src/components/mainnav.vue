@@ -73,11 +73,11 @@ export default {
 			}
 		},
 		toScenery(){
-			this.$router.push('/scenery')
 			this.$store.commit('pushTitle', {
 				title: '景点门票',
 				route: '/scenery'
 			})
+			this.$router.push('/scenery')
 		}
 	}
 }

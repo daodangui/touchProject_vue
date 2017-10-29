@@ -1,5 +1,5 @@
 <template>
-	<footer class="memberfoot">
+	<div class="memberfoot">
 		<ul>
 			<li><a href="">客服电话</a></li>
 			<li><a href="">下载客户端</a></li>
@@ -9,7 +9,7 @@
 		<p>
 			&copy;2017同程旅游
 		</p>
-	</footer>
+	</div>
 </template>
 
 <script>
