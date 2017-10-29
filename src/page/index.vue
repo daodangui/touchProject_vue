@@ -72,4 +72,7 @@ export default {
 		width: 100%;
 	}
 }
+#footer{
+	position: static;
+}
 </style>

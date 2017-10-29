@@ -2,7 +2,7 @@
 	<nav class="nav">
 		<div class="menubox1">
 			<div class="menubar">
-				<a href="">
+				<a href="javascript:void(0)">
 					<i class="yo-ico">&#xe603;</i>
 					<span>全部订单</span>
 					<i class="yo-ico">&#xe601;</i>
@@ -11,21 +11,21 @@
 		</div>
 		<div class="menubox2">
 			<div class="menubar">
-				<a href="">
+				<a href="javascript:void(0)">
 					<i class="yo-ico">&#xe659;</i>
 					<span>奖金</span>
 					<i class="yo-ico">&#xe601;</i>
 				</a>
 			</div>
 			<div class="menubar">
-				<a href="">
+				<a href="javascript:void(0)">
 					<i class="yo-ico">&#xe638;</i>
 					<span>立返</span>
 					<i class="yo-ico">&#xe601;</i>
 				</a>
 			</div>
 			<div class="menubar">
-				<a href="">
+				<a href="javascript:void(0)">
 					<i class="yo-ico">&#xe677;</i>
 					<span>红包</span>
 					<i class="yo-ico">&#xe601;</i>
@@ -34,7 +34,7 @@
 		</div>
 		<div class="menubox3">
 			<div class="menubar">
-				<a href="">
+				<a href="javascript:void(0)">
 					<i class="yo-ico">&#xe625;</i>
 					<span>常用信息</span>
 					<span class="remark">常用旅客、邮寄地址</span>
@@ -49,7 +49,7 @@
 				</a>
 			</div>
 			<div class="menubar">
-				<a href="">
+				<a href="javascript:void(0)">
 					<i class="yo-ico">&#xe629;</i>
 					<span>关于同程</span>
 					<i class="yo-ico">&#xe601;</i>
@@ -69,11 +69,15 @@ export default {
 	},
 	methods: {
 		toCollect(){
-			this.$router.push('/collect')
-			this.$store.commit('pushTitle', {
-				title: '我的收藏',
-				route: '/collect'
-			})
+			if(this.$store.state.user.login){
+				this.$router.push('/collect')
+				this.$store.commit('pushTitle', {
+					title: '我的收藏',
+					route: '/collect'
+				})
+			}else{
+				this.$router.push('/login')
+			}
 		}
 	}
 }
