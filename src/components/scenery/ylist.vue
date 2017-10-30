@@ -105,6 +105,7 @@
 					var anchor = document.querySelector(s);
 					document.body.scrollTop = anchor.offsetTop; // chrome
 					document.documentElement.scrollTop = anchor.offsetTop; // firefox
+					
 				}
 			},
 			check() {
@@ -122,9 +123,9 @@
 				var $this = this;
 				window.addEventListener('scroll', function() {
 					var b = document.body.scrollTop;
-					if(b >= 2305 && b < 4435) {
+					if(b >= 2304 && b < 4435) {
 						$this.index = "b";
-					} else if(b >= 4435) {
+					} else if(b >= 4436) {
 						$this.index = "c";
 					} else {
 						$this.index = "a";
