@@ -23,7 +23,9 @@
 						</div>
 
 						<p class="hotel-tag">
-							<span>快乐童心</span>
+							<span v-for="(item,i) in list.Tag">
+								{{item.Name}}
+							</span>
 						</p>
 
 						<div class="hotel-count">
@@ -154,7 +156,6 @@
 					.hotel-left {
 						width: 0.9rem;
 						height: 0.8rem;
-						background: yellow;
 						img {
 							width: 100%;
 							height: 100%;
@@ -163,7 +164,6 @@
 					.hotel-right {
 						width: 2rem;
 						height: 0.9rem;
-						/*background: chocolate;*/
 						h2 {
 							width: 2rem;
 							height: 0.32rem;
@@ -201,6 +201,7 @@
 							width: 2rem;
 							height: 0.18rem;
 							margin-top: 0.03rem;
+							overflow: hidden;
 							span {
 								height: 0.17rem;
 								padding: 0rem 0.04rem 0;

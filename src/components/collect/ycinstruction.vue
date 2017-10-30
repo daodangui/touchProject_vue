@@ -1,17 +1,17 @@
 <template>
 	<div class="instruction" v-if="data">
-		<div class="hotel" v-for="(list,i) in datalist" :key="i">
+		<!--<div class="hotel" v-for="(list,i) in datalist" :key="i">
 			<div class="hotel-content">
 				<h6>
-					<!--<img :src="list.pic" alt="" />-->
-					<img :src="data.PictureUrl" alt="" />
-					<span>{{list.title}}</span>
+					<img :src="list.pic" alt="" />
+					<!--<img :src="data.PictureUrl" alt="" />-->
+					<!--<span>{{list.title}}</span>
 				</h6>
 				<div class="hotel-bottom">
 					<div class="left">
-					<!--<img :src="list.Img" alt="" />-->
-					<img :src="data.PictureUrl" alt="" />
-					</div>
+					<img :src="list.Img" alt="" />
+					<!--<img :src="data.PictureUrl" alt="" />-->
+					<!--</div>
 					<div class="right">
 						<p>{{data.Name}}</p>
 						<p v-show="i==1" class="hide"> 
@@ -19,6 +19,52 @@
 						</p>
 						<div class="plane">
 							{{list.position}}
+						</div>
+					</div>
+				</div>
+			</div>-->
+		<!--</div>-->
+		
+		
+		
+		<div class="hotel">
+			<div class="hotel-content">
+				<h6>
+					<img src="//img1.40017.cn/cn/sl/touch/detail/icon-hotel.png" alt="" />
+					<span>酒店介绍</span>
+				</h6>
+				<div class="hotel-bottom">
+					<div class="left">
+						<img :src="data.PictureUrl" alt="" />
+					</div>
+					<div class="right">
+						<p>{{data.Name}}</p>
+						<div class="plane">
+							北京市丰台区王佐镇福宫路39号，王佐路口
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="hotel">
+			<div class="hotel-content">
+				<h6>
+					<img src="//img1.40017.cn/cn/sl/touch/detail/icon-scenic.png" alt="" />
+					<span>景点介绍</span>
+				</h6>
+				<div class="hotel-bottom">
+					<div class="left">
+						<img src="//pic4.40017.cn/zzy/rimage/2016/04/20/17/llZd7v_150x150_02.jpg" alt="" />
+					</div>
+					<div class="right">
+						<p>{{data.Name}}</p>
+						<p class="hide"> 
+							开园时间：10:00-21:00
+						</p>
+						<div class="plane">
+							北京市丰台区王佐镇福宫路39号，王佐路口
 						</div>
 					</div>
 				</div>
@@ -40,9 +86,9 @@
 						"position":"北京市丰台区王佐镇福宫路39号，王佐路口"
 					},
 					{
-						"pic":"//img1.40017.cn/cn/sl/touch/detail/icon-hotel.png",
+						"pic":"//img1.40017.cn/cn/sl/touch/detail/icon-scenic.png",
 						"title":"景点介绍",
-						"Img": "//pic4.40017.cn/zzy/rimage/2016/04/20/17/llZd7v_150x150_02.jpg.webp",
+						"Img": "//pic4.40017.cn/zzy/rimage/2016/04/20/17/llZd7v_150x150_02.jpg",
 						"Comment": "南宫温泉",
 						"position":"北京市丰台区王佐镇福宫路39号"
 					}
