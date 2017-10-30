@@ -13,7 +13,12 @@
 		},
 		mounted() {
 			this.data = this.$store.state.a.list[0];
-		}
+			document.body.scrollTop=0;
+		},
+		methods : {
+		},
+		created(){
+		},
 	}
 </script>
 

@@ -7,9 +7,9 @@ import collect from '../page/collect.vue';
 import mycollect from '../page/mycollect.vue';
 import register from '../page/register.vue';
 import login from '../page/login.vue';
-
 import details from '../page/details.vue';
 import ycollect from '../page/ycollect.vue';
+
 
 export default [
 	{
