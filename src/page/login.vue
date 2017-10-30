@@ -35,6 +35,7 @@
 <script>
 import cptfoot from '../components/member/memberfoot.vue'
 import axios from 'axios';
+import Mint from 'mint-ui';
 
 export default{
 	data(){
@@ -66,7 +67,7 @@ export default{
 			    }
 			})
 			.then(function (response) {
-				if(response.data == true){
+				if(response.data){
 					$this.$store.commit('changeLoginState', {
 						login: true,
 						username: $this.username
@@ -77,7 +78,8 @@ export default{
 					})
 					$this.$router.push('/')
 				}else{
-					$this.messagebox('用户名或密码错误,请重新输入');
+					console.log(1234);
+					Mint.MessageBox('用户名或密码错误,请重新输入');
 				}
 			})
 			.catch(function (error) {
