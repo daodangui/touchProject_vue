@@ -8,27 +8,24 @@
 	export default {
 		data() {
 			return {
-				data : null
+				data: null
 			}
 		},
 		mounted() {
 			this.data = this.$store.state.a.list[0];
-			document.body.scrollTop=0;
+			document.body.scrollTop = 0;
 		},
-		methods : {
-		},
-		created(){
-		},
+		created() {},
 	}
 </script>
 
 <style lang="scss" scoped="scoped">
-.img{
-	width: 100%;
-	height: 1.73rem;
-	img{
+	.img {
 		width: 100%;
-		height: 100%;
+		height: 1.73rem;
+		img {
+			width: 100%;
+			height: 100%;
+		}
 	}
-}
 </style>

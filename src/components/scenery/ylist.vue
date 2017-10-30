@@ -1,6 +1,11 @@
 <template>
 	<div class="position">
 		<div class="wrap">
+<<<<<<< HEAD
+=======
+			
+		
+>>>>>>> master
 		<ul v-bind:class="{ guding: isActive }" id="a">
 			<li :class="{ active :index=='a'}" @click="change('a')">
 				<a href="javascript:void(0)">
@@ -20,6 +25,8 @@
 		</ul>
 		
 		</div>
+
+	</div>
 
 		<div class="list">
 			<ul v-if="dataList">
@@ -154,8 +161,13 @@
 		width: 100%;
 		background: white;
 		.wrap{
+<<<<<<< HEAD
 			width:100%;
 			height:0.4rem;
+=======
+			width: 100%;
+			height: 0.4rem;
+>>>>>>> master
 		
 		>ul.guding {
 			position: absolute;

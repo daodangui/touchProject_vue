@@ -100,7 +100,7 @@
 		},
 
 		mounted() {
-			axios.get('/vip/ticket.php')
+			axios.get('/aaa/ticket.php')
 				.then((res) => {
 					const data = res.data.SceneryPrices[0].ChannelPriceModelEntityList;
 					this.ticketlist = data;
@@ -195,7 +195,7 @@
 	.detail {
 		width: 100%;
 		height: 1.38rem;
-		background: khaki;
+		background-color: #eee;
 		.detail-wrap {
 			width: 100%;
 			height: 1.38rem;
@@ -218,8 +218,13 @@
 				display: flex;
 				justify-content: space-between;
 				line-height: 12px;
-				padding-top: 5px;
+				padding-top: 0px;
 				.left {
+					height: 0.16rem;
+					width: 2.18rem;
+					overflow: hidden;
+					line-height: 0.16rem;
+
 					>span::before {
 						content: '';
 						display: inline-block;
