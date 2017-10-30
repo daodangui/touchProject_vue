@@ -10,6 +10,7 @@ import login from '../page/login.vue';
 import searchInfo from '../page/searchInfo.vue';
 import details from '../page/details.vue';
 import ycollect from '../page/ycollect.vue';
+import square from '../page/square.vue';
 
 export default [
 	{
@@ -62,5 +63,9 @@ export default [
 	{
 		path: '/searchInfo',
 		component: searchInfo
+	},
+	{
+		path: '/square',
+		component: square
 	}
 ]

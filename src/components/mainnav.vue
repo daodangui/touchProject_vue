@@ -20,11 +20,20 @@
 			</div>
 		</div>
 		<div class="subnav">
-			<div class="subnavitem" v-for="i in subnav">
-				<a href="">
-					<i class="spicon"></i>
-					<em>{{i}}</em>
-				</a>
+			<div class="subnavitem" v-for="i in subnav" :key="i.id">
+				<template v-if="i == '微社区'">
+					<router-link tag="a" href="javascript:void(0)" to="/square">
+						<i class="spicon"></i>
+						<em>{{i}}</em>
+					</router-link>
+				</template>
+				<template v-else>
+					<a href="">
+						<i class="spicon"></i>
+						<em>{{i}}</em>
+					</a>
+				</template>
+				
 			</div>
 		</div>
 	</nav>
