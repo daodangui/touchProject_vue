@@ -63,13 +63,16 @@ module.exports = {
               '^/bip': ''
             }
         },
-
         '/aaa': {
             target: 'http://10.9.164.35:3000',
             changeOrigin: true,
             pathRewrite: {
               '^/aaa': ''
             }
+        },
+        '/wsq': {
+            target: 'https://appnew.ly.com',
+            changeOrigin: true
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
