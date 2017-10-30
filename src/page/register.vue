@@ -4,7 +4,7 @@
 			<cpt-head />
 		</header>
 		<section class="regcontent">
-			<mt-field  placeholder="请输入手机号码" v-model="username"></mt-field>
+			<mt-field  placeholder="请输入手机号码/用户名" v-model="username"></mt-field>
 			<mt-field  placeholder="请输入密码" type="emil" v-model="password"></mt-field>
 			<mt-button class="submit" type="danger" @click.native="doregister">提交注册信息</mt-button>
 		</section>

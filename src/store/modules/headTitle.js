@@ -12,7 +12,9 @@ export default{
 			state.titles.push(newTitle)
 		},
 		popTitle(state){
-			state.titles.pop()
+			if(state.titles.length>0){
+				state.titles.pop()
+			}
 		}
 	}
 }

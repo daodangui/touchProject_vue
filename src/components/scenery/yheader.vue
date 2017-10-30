@@ -41,8 +41,8 @@
 			},
 			backTo(){
 				this.$store.commit('popTitle');
-				this.$router.push(this.$store.state.headTitle.titles[this.$store.state.headTitle.titles.length-1].route);
 				this.$store.commit('removelist');
+				this.$router.push(this.$store.state.headTitle.titles[this.$store.state.headTitle.titles.length-1].route);
 			},
 			toLink: function(route){
 				switch (route){
