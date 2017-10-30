@@ -12,6 +12,7 @@ import details from '../page/details.vue';
 import ycollect from '../page/ycollect.vue';
 import square from '../page/square.vue';
 
+
 export default [
 	{
 		path: '/',

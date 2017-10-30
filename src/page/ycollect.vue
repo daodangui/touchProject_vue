@@ -29,22 +29,18 @@
 	import ycuse from '../components/collect/ycuse.vue';
 	import ycblank from '../components/collect/ycblank.vue';
 	
-	
-
 	export default {
 		data() {
 			return {
-//				 list: this.$route.params.list
 			}
 		},
 		methods: {
-
 		},
 		created(){
 			document.documentElement.style.fontSize = '31.25vw';
+			
 		},
 		mounted() {
-//			console.log(this.list);
 		},
 		components: {
 			'y-header': yheader,

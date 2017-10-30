@@ -1,7 +1,7 @@
 <template>
 	<div class="nav">
 		<div class="pic">
-			<a href="">
+			<a href="javascript:void(0)">
 				<img src="../../assets/images/yimages/palace.jpg" />
 			</a>
 			<div class="pic-mask">
@@ -20,14 +20,14 @@
 
 			<div class="bottomlist" v-for="(list,i) in dataList" :key="i">
 				<img :src="list.Img" alt="" />
-				<a href="">
+				<a href="javascript:void(0)">
 					<span>{{list.Comment}}</span>
 					<em></em>
 				</a>
 			</div>
 
 			<div class="bottom-plus">
-				<a href="">
+				<a href="javascript:void(0)">
 					<img src="../../assets/images/yimages/plus_icon.png" /> PLUS会员优惠 最高立省
 					<span class="plus_mon">20</span>元/张
 					<span class="plus_span">
@@ -42,11 +42,11 @@
 </template>
 
 <script>
-	import '../../assets/images/yimages/palace.jpg';
-	import '../../assets/images/yimages/labelicon.png';
-	import '../../assets/images/yimages/a_comment.png';
-	import '../../assets/images/yimages/arrow_ico.png';
-	import '../../assets/images/yimages/plus_icon.png';
+//	import '../../assets/images/yimages/palace.jpg';
+//	import '../../assets/images/yimages/labelicon.png';
+//	import '../../assets/images/yimages/a_comment.png';
+//	import '../../assets/images/yimages/arrow_ico.png';
+//	import '../../assets/images/yimages/plus_icon.png';
 
 	export default {
 		data() {

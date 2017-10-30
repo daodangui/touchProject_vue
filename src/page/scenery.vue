@@ -9,7 +9,7 @@
 		<y-closest></y-closest>
 		<!--三项合并-->
 		<y-scenery></y-scenery>
-
+	
 		<!--景色列表项，获取数据-->
 		<y-list></y-list>
 
@@ -32,7 +32,6 @@
 	import ybottom from '../components/scenery/ybottom.vue';
 	import yhotel from '../components/scenery/yhotel.vue';
 	import yview from '../components/scenery/yview.vue';
-
 	export default {
 		data() {
 			return {
@@ -49,10 +48,6 @@
 			document.documentElement.style.fontSize = '31.25vw';
 		},
 		mounted() {
-//			window.addEventListener('scroll', function(){
-//				var a = document.body.scrollTop;
-////				if()
-//			},true)
 		},
 		components: {
 			'y-header': yheader,

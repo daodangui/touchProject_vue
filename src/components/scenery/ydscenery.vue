@@ -8,15 +8,11 @@
 
 			<ul class="scenery-list">
 				<template v-if="n==1">
-					<li v-for="(list,i) in dataList.Scenerylist" :key="i" @click="gotocollect()">
+					<li v-for="(list,i) in dataList.Scenerylist" :key="i">
 						<a href="javascript:void(0)">
 							<img :src="list.SceneryImg" alt="" />
-							<!--<img src="/media/images/SZl7Se_150x150_00.jpg" />-->
 							<div class="scenery-info">
 								<h4>{{list.SceneryName}}</h4>
-								<!--<h4>中国紫檀博物馆</h4>-->
-
-								<!--<p>研究、陈列展示紫檀艺术</p>-->
 								<p>{{list.Describe}}</p>
 
 								<div class="tips">
@@ -37,13 +33,10 @@
 
 				<template v-else>
 					<li v-for="(list,i) in dataList.PeripheryScenerylist" :key="i">
-						<a href="">
+						<a href="javascript:void(0)">
 							<img :src="list.SceneryImg" alt="" />
-							<!--<img src="/media/images/SZl7Se_150x150_00.jpg" />-->
 							<div class="scenery-info">	
 								<h4>{{list.SceneryName}}</h4>
-								<!--<h4>中国紫檀博物馆</h4>-->
-								<!--<p>研究、陈列展示紫檀艺术</p>-->
 								<p>{{list.Describe}}</p>
 
 								<div class="tips">
@@ -79,11 +72,7 @@
 		},
 		methods:{
 			gotocollect() {
-				// name别名,指代详情页 参数为函数调用传过来的参数
-				// 编程式导航，不是通过a 标签来定义导航链接，我们还可以借助 router 的实例方法，通过编写代码来实现
-				// 在 Vue 实例内部，你可以通过 $router 访问路由实例。因此你可以调用 this.$router.push。
-				//				this.$router.push("/details");
-				this.$router.push("/ycollect");
+				
 			}
 		},
 		mounted() {

@@ -2,17 +2,17 @@
 	<div class="ticket">
 		<ul class="ticket-nav">
 			<li class="active">
-				<a href="">
+				<a href="javascript:void(0)">
 					<h3>票价</h3>
 				</a>
 			</li>
 			<li>
-				<a href="">
+				<a href="javascript:void(0)">
 					<h3>点评</h3>
 				</a>
 			</li>
 			<li>
-				<a href="">
+				<a href="javascript:void(0)">
 					<h3>须知</h3>
 				</a>
 			</li>
@@ -104,7 +104,9 @@
 				.then((res) => {
 					const data = res.data.SceneryPrices[0].ChannelPriceModelEntityList;
 					this.ticketlist = data;
-				})
+				});
+				
+				document.body.scrollTop = 0;
 		},
 		methods: {
 			showhide(k) {

@@ -2,7 +2,7 @@
 	<div class="scenery">
 		<div class="scenery-nav">
 			<div class="nav-left">
-				<a href="">
+				<a href="javascript:void(0)">
 					<div class="nav-left-content">
 						<span>北京景点</span>
 						<p>当地热门景点推荐</p>
@@ -12,7 +12,7 @@
 			</div>
 
 			<div class="nav-right">
-				<a href="">
+				<a href="javascript:void(0)">
 					<div class="nav-right-content">
 						<span>今日票</span>
 						<p>今日可入园票推荐</p>
@@ -23,13 +23,13 @@
 		</div>
 
 		<div class="scenery-img">
-			<a href="">
+			<a href="javascript:void(0)">
 				<img src="../../assets/images/yimages/banner.png" />
 			</a>
 		</div>
 
 		<div class="scenery-sort">
-			<a href="">
+			<a href="javascript:void(0)">
 				<div class="ticket">
 					<h4>门票1元起</h4>
 					<span>PLUS会员专享</span>
@@ -40,7 +40,7 @@
 			</a>
 
 
-			<a href="">
+			<a href="javascript:void(0)">
 				<div class="ticket">
 					<h4>口碑精选</h4>
 					<span>金秋畅游</span>
@@ -54,12 +54,7 @@
 </template>
 
 <script>
-	// import '../../media/images/yimages/nav_bg.png';
-	// import '../../media/images/yimages/left.png';
-	// import '../../media/images/yimages/right.png';
-	// import '../../media/images/yimages/banner.png';
-	// import '../../media/images/yimages/circle.jpg';
-	// import '../../media/images/yimages/circle1.png';
+	
 </script>
 
 <style lang="scss" scoped="scoped">

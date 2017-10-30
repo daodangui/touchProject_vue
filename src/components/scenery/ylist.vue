@@ -1,27 +1,24 @@
 <template>
 	<div class="position">
 		<div class="wrap">
-			
-		
-		<ul v-bind:class="{ guding: isActive }" id="a">
-			<li :class="{ active :index=='a'}" @click="change('a')">
-				<a href="javascript:void(0)">
-					<h3>当季热门</h3>
-				</a>
-			</li>
-			<li :class="{ active:index=='b'}" @click="change('b')">
-				<a href="javascript:void(0)">
-					<h3>酒景套餐</h3>
-				</a>
-			</li>
-			<li :class="{active:index=='c'}" @click="change('c')">
-				<a href="javascript:void(0)">
-					<h3>周边景点</h3>
-				</a>
-			</li>
-		</ul>
-
-	</div>
+			<ul v-bind:class="{ guding: isActive }" id="a">
+				<li :class="{ active :index=='a'}" @click="change('a')">
+					<a href="javascript:void(0)">
+						<h3 :class="{ hactive:index=='a'}">当季热门</h3>
+					</a>
+				</li>
+				<li :class="{ active:index=='b'}" @click="change('b')">
+					<a href="javascript:void(0)">
+						<h3 :class="{ hactive:index=='b'}">酒景套餐</h3>
+					</a>
+				</li>
+				<li :class="{active:index=='c'}" @click="change('c')">
+					<a href="javascript:void(0)">
+						<h3 :class="{ hactive:index=='c'}">周边景点</h3>
+					</a>
+				</li>
+			</ul>
+		</div>
 
 		<div class="list">
 			<ul v-if="dataList">
@@ -42,7 +39,9 @@
 								</p>
 								<i></i>
 								<p class="museums">
-									<span>博物馆</span>
+									<span v-for="(item,i) in list.Tag">
+										{{list.Name}}
+									</span>
 								</p>
 							</div>
 
@@ -61,29 +60,29 @@
 					</a>
 				</li>
 			</ul>
-			
-			
+
 			<div class="yo-loading" v-if="!dataList">
 				<i class="yo-ico"></i>
 				<div class="text">加载中...</div>
 			</div>
 		</div>
 
-		<div class="hot-bottom">
-			<a href="">查看全部</a>
+		<div class="hot-bottom" @click="more()">
+			<a href="javascript:void(0)">加载更多...</a>
 		</div>
 	</div>
 </template>
 
 <script>
-	import axios from 'axios'
+	import axios from 'axios';
+	var cityId=53;
 	export default {
 		data() {
 			return {
 				dataList: null,
 				index: "a",
-				isfixed : false,
-				topvalue : 0,
+				isfixed: false,
+				topvalue: 0,
 				isActive: false
 			}
 		},
@@ -99,20 +98,66 @@
 			change(k) {
 				this.index = k;
 				var s = "#" + k;
-				var anchor = document.querySelector(s);
-				document.body.scrollTop = anchor.offsetTop; // chrome
-				document.documentElement.scrollTop = anchor.offsetTop; // firefox
+				if(k == 'a') {
+					document.body.scrollTop = 589; // chrome
+					document.documentElement.scrollTop = 589;
+				} else {
+					var anchor = document.querySelector(s);
+					document.body.scrollTop = anchor.offsetTop; // chrome
+					document.documentElement.scrollTop = anchor.offsetTop; // firefox
+				}
 			},
 			check() {
-				var $this=this;
+				var $this = this;
 				window.addEventListener('scroll', function() {
 					var a = document.body.scrollTop;
-					if(a > 589) {
+					if(a >= 589) {
 						$this.isActive = true;
 					} else {
 						$this.isActive = false;
 					}
 				}, true)
+			},
+			checklist() {
+				var $this = this;
+				window.addEventListener('scroll', function() {
+					var b = document.body.scrollTop;
+					if(b >= 2305 && b < 4435) {
+						$this.index = "b";
+					} else if(b >= 4435) {
+						$this.index = "c";
+					} else {
+						$this.index = "a";
+					}
+				}, true)
+			},
+
+			more() {
+				var $this = this;
+				axios.post('/bip/gateway/scenery.resource/v1/resource/scenerysrcommend/recommend/?Labrador-Token=0a905013-886c-48d7-936f-c08226227398', {
+						totalcount: 10,
+						height: 160,
+						width: 180,
+						pagesize: 18,
+						Page: 2,
+						cityId: ++cityId,
+						permanentcityid: "",
+						lon: 0,
+						lat: 0,
+						environment: 2,
+						os: 0,
+						MermberId: "",
+						SortOrderType: 2901001,
+						IsNeedShurtTour: 1
+					})
+					.then(function(response) {
+						const data = response.data.data.SceneryList;
+						console.log(data);
+						$this.dataList = $this.dataList.concat(data);
+					})
+					.catch(function(error) {
+						console.log(error);
+					});
 			}
 		},
 		mounted() {
@@ -141,6 +186,7 @@
 					console.log(error);
 				});
 			this.check();
+			this.checklist();
 		}
 	}
 </script>
@@ -151,51 +197,50 @@
 	@import "../../style/yo/lib/core/function";
 	@import "../../style/yo/lib/core/classes";
 	@import "../../style/yo/lib/element/yo-loading.scss";
-	
 	.position {
 		width: 100%;
 		background: white;
-		.wrap{
+		.wrap {
 			width: 100%;
 			height: 0.4rem;
-		
-		>ul.guding {
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: 999999;
-			background: white;
-		}
-		>ul {
-			width: 100%;
-			height: 0.4rem;
-			border-bottom: solid 1px #ddd;
-			display: flex;
-			flex-direction: row;
-			li {
-				flex: 1;
-				height: 0.39rem;
-				text-align: center;
-				a {
-					display: inline-block;
-					width: 0.7rem;
-					height: 0.36rem;
-					h3 {
-						color: #666666;
+			>ul.guding {
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 999999;
+				background: white;
+			}
+			>ul {
+				width: 100%;
+				height: 0.4rem;
+				border-bottom: solid 1px #ddd;
+				display: flex;
+				flex-direction: row;
+				li {
+					flex: 1;
+					height: 0.39rem;
+					text-align: center;
+					a {
+						display: inline-block;
 						width: 0.7rem;
-						font-size: 0.16rem;
-						text-align: center;
 						height: 0.36rem;
-						line-height: 0.36rem;
+						h3 {
+							color: #666666;
+							width: 0.7rem;
+							font-size: 0.16rem;
+							text-align: center;
+							height: 0.36rem;
+							line-height: 0.36rem;
+						}
+						h3.hactive {
+							color: #23beae;
+						}
 					}
 				}
+				li.active {
+					border-bottom: 3px solid #23beae;
+				}
 			}
-			/*选中项高亮显示*/
-			li.active {
-				color: #23beae;
-				border-bottom: 3px solid #23beae;
-			}
-		}
 		}
 		.list {
 			width: 100%;
@@ -206,7 +251,6 @@
 					width: 3rem;
 					height: 0.85rem;
 					margin-top: 0.1rem;
-					/*加底部边框*/
 					a::after {
 						content: " ";
 						position: absolute;
@@ -258,8 +302,8 @@
 									width: 0.95rem;
 									height: 0.16rem;
 									line-height: 0.16rem;
-									display: inline-block;
-									.list-price {}
+									display: flex;
+									flex-direction: row;
 									.yj {
 										font-size: 0.08rem;
 										color: #ff4614;
@@ -273,23 +317,32 @@
 								}
 								i {
 									display: inline-block;
-									width: 0.44rem;
+									width: 0.54rem;
 									height: 0.13rem;
 									background: url(../../assets/images/yimages/list-bg.png) no-repeat;
 									background-size: 44px auto;
 								}
 								.museums {
+									margin-left: 0.08rem;
 									width: 0.54rem;
-									height: 0.13rem;
+									height: 0.18rem;
 									display: inline-block;
 									text-align: right;
+									overflow: hidden;
 									span {
+										text-align: center;
+										width: 0.5rem;
 										margin-left: 0.05rem;
-										padding: 3px 4px 0;
+										padding: 0px 0px 0;
 										border: 1px solid #61aefd;
-										font-size: 0.1rem;
+										font-size: 0.08rem;
 										color: #61aefd;
-										margin-bottom: 0.05rem;
+										height: 0.14rem;
+										display: inline-block;
+										line-height: 0.14rem;
+										text-overflow: ellipsis;
+										white-space: nowrap;
+										overflow: hidden;
 									}
 								}
 							}

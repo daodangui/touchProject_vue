@@ -3,16 +3,16 @@
 		<div class="bottom-nav">
 			<ul>
 				<li>
-					<a href="">客服电话</a>
+					<a href="javascript:void(0)">客服电话</a>
 				</li>
 				<li>
-					<a href="">下载客户端</a>
+					<a href="javascript:void(0)">下载客户端</a>
 				</li>
 				<li>
-					<a href="">关于同程</a>
+					<a href="javascript:void(0)">关于同程</a>
 				</li>
 				<li>
-					<a href="">电脑版</a>
+					<a href="javascript:void(0)">电脑版</a>
 				</li>
 			</ul>
 			
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-	// import '../../media/images/yimages/content.jpg';
 </script>
 
 <style lang="scss" scoped="scoped">

@@ -6,7 +6,7 @@
 		<div class="list">
 			<ul v-if="dataList">
 				<li v-for="(list,i) in dataList" :key="i">
-					<a href="">
+					<a href="javascript:void(0)">
 						<div class="list-left">
 							<img :src="list.PictureUrl" alt=""/>
 						</div>
@@ -23,7 +23,9 @@
 								</p>
 								<i></i>
 								<p class="museums">
-									<span>游乐场</span>
+									<span v-for="(item,i) in list.Tag">
+										{{list.Name}}
+									</span>
 								</p>
 							</div>
 
@@ -144,7 +146,6 @@
 					width: 3rem;
 					height: 0.85rem;
 					margin-top: 0.1rem;
-					/*加底部边框*/
 					a::after {
 						content: " ";
 						position: absolute;
@@ -193,11 +194,9 @@
 								flex-direction: row;
 								.detail {
 									color: #999;
-									/*width: 0.85rem;*/
 									width: 0.95rem;
 									height: 0.16rem;
 									line-height: 0.16rem;
-									/*display: inline-block;*/
 									display:flex;
 									flex-direction:row;
 									.list-price {}
@@ -220,18 +219,20 @@
 									background-size: 44px auto;
 								}
 								.museums {
-									/*width: 0.64rem;*/
 									width: 0.54rem;
-									height: 0.13rem;
+									height: 0.21rem;
 									display: inline-block;
 									text-align: right;
+									overflow: hidden;
 									span {
+										text-align: center;
+										display: inline-block;
 										margin-left: 0.05rem;
-										padding: 3px 4px 0;
+										height: 0.19rem;
+										line-height: 0.19rem;
 										border: 1px solid #61aefd;
 										font-size: 0.1rem;
 										color: #61aefd;
-										margin-bottom: 0.05rem;
 									}
 								}
 							}

@@ -7,7 +7,7 @@
 
 		<div class="closest-content">
 			<div class="content-wrap">
-				<a href="">
+				<a href="javascript:void(0)">
 					<div class="cell-left">
 						<img src="../../assets/images/yimages/content.jpg" />
 					</div>
@@ -43,7 +43,6 @@
 </template>
 
 <script>
-	// import '../../media/images/yimages/content.jpg';
 </script>
 
 <style lang="scss" scoped="scoped">
