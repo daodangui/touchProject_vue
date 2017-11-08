@@ -46,15 +46,6 @@ module.exports = {
                 '^/city': ''
             }
         },
-        '/dologin': {
-            target: 'http://10.9.164.43:8080/officemateGit/',
-            changeOrigin: true
-        },
-        '/doregister': {
-            target: 'http://10.9.164.43:8080/officemateGit/',
-            changeOrigin: true
-        },
-			
 		//yp  数据
 		'/bip': {
             target: 'https://servicegw.ly.com',
@@ -73,6 +64,13 @@ module.exports = {
         '/wsq': {
             target: 'https://appnew.ly.com',
             changeOrigin: true
+        },
+        '/node': {
+            target: 'http://10.9.164.43:5000',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/node': ''
+            }
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

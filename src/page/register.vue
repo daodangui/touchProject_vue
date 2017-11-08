@@ -29,17 +29,15 @@ export default {
 	methods: {
 		doregister(){
 			var $this = this;
-			axios.get('/doregister', {
-			    params: {
+			axios.post('/node/api/users/register', {
 			    	username: $this.username,
 			    	password: $this.password,
-			    	verify: false,
-			    	name: '',
-			    	tel: ''
-			    }
+			    	tel: '',
+					email: '',
+					roles: 0
 			})
 			.then(function (response) {
-				if(response.data == true){
+				if(response.data.data.success){
 					$this.$messagebox('注册成功,现在去登录？').then(function(){
 						$this.$store.commit('pushTitle',{
 							title: '会员登录',
