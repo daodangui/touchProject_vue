@@ -35,6 +35,7 @@
 <script>
 import cptfoot from '../components/member/memberfoot.vue'
 import axios from 'axios';
+import Mint from 'mint-ui';
 
 export default{
 	data(){
@@ -59,25 +60,27 @@ export default{
 		},
 		dologin(){
 			var $this = this;
-			axios.get('/dologin', {
-			    params: {
-			    	username: $this.username,
-			    	password: $this.password
-			    }
+			axios.post('/node/api/users/login', {
+		    	username: $this.username,
+		    	password: $this.password
 			})
 			.then(function (response) {
-				if(response.data == true){
-					$this.$store.commit('changeLoginState', {
-						login: true,
-						username: $this.username
-					})
-					$this.$store.commit('pushTitle',{
-						title: '首页',
-						route: '/'
-					})
-					$this.$router.push('/')
+				if(response.data.data.success){
+					if(parseInt(response.data.data.user.status)){
+						$this.$store.commit('changeLoginState', {
+							login: true,
+							username: $this.username
+						})
+						$this.$store.commit('pushTitle',{
+							title: '首页',
+							route: '/'
+						})
+						$this.$router.push('/')
+					}else{
+						$this.$messagebox('当前账户已被封');
+					}
 				}else{
-					$this.messagebox('用户名或密码错误,请重新输入');
+					$this.$messagebox('用户名或密码错误,请重新输入');
 				}
 			})
 			.catch(function (error) {

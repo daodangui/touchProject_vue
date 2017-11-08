@@ -4,7 +4,7 @@
 			<cpt-head />
 		</header>
 		<section class="regcontent">
-			<mt-field  placeholder="请输入手机号码" v-model="username"></mt-field>
+			<mt-field  placeholder="请输入手机号码/用户名" v-model="username"></mt-field>
 			<mt-field  placeholder="请输入密码" type="emil" v-model="password"></mt-field>
 			<mt-button class="submit" type="danger" @click.native="doregister">提交注册信息</mt-button>
 		</section>
@@ -29,17 +29,15 @@ export default {
 	methods: {
 		doregister(){
 			var $this = this;
-			axios.get('/doregister', {
-			    params: {
+			axios.post('/node/api/users/register', {
 			    	username: $this.username,
 			    	password: $this.password,
-			    	verify: false,
-			    	name: '',
-			    	tel: ''
-			    }
+			    	tel: '',
+					email: '',
+					roles: 0
 			})
 			.then(function (response) {
-				if(response.data == true){
+				if(response.data.data.success){
 					$this.$messagebox('注册成功,现在去登录？').then(function(){
 						$this.$store.commit('pushTitle',{
 							title: '会员登录',
