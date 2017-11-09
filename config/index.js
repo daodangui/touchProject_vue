@@ -65,6 +65,7 @@ module.exports = {
             target: 'https://appnew.ly.com',
             changeOrigin: true
         },
+        
         '/node': {
             target: 'http://10.9.164.43:5000',
             changeOrigin: true,

@@ -25,36 +25,47 @@
 				<li v-for="(list,i) in dataList" :key="i" @click="gotoDetail(list)">
 					<a href="javascript:void(0)">
 						<div class="list-left">
-							<img :src="list.PictureUrl" alt="" />
+							<!--<img :src="list.PictureUrl" alt="" />-->
+							<img :src="'http://localhost:5000/upload/'+list.picture" alt="" />
 						</div>
 
 						<div class="list-right">
-							<h2>{{list.Name}} <span>(5A)</span></h2>
+							<!--<h2>{{list.Name}} <span>(5A)</span></h2>-->
+							<h2>{{list.sceneryName}} <span>(5A)</span></h2>
+							
 							<div class="list-money">
 								<p class="detail">
 									<span class="list-price">同程价</span>
 									<span class="yj">¥</span>
-									<span class="money">{{list.Pirce}}</span>
+									<!--<span class="money">{{list.Pirce}}</span>-->
+									<span class="money">{{list.price}}</span>
+									
 									<span class="qi">起</span>
 								</p>
 								<i></i>
 								<p class="museums">
 									<span v-for="(item,i) in list.Tag">
-										{{list.Name}}
+										<!--{{list.Name}}-->
 									</span>
 								</p>
 							</div>
 
 							<div class="list-count">
 								<p class="list-count-wrap">
-									<span class="dp-count">{{list.CommentCount}}条点评</span>&nbsp;&nbsp;
-									<span class="my-count">{{list.Satisfaction}}%</span>
+									<span class="dp-count">{{list.commentcount}}条点评</span>&nbsp;&nbsp;
+									<!--<span class="dp-count">{{list.CommentCount}}条点评</span>&nbsp;&nbsp;-->
+									
+									<!--<span class="my-count">{{list.Satisfaction}}%</span>-->
+									
 									<span class="my-text">满意</span>
 								</p>
 							</div>
 
 							<div class="list-desc">
-								<p>{{list.Summary}}</p>
+								<!--<p>{{list.Summary}}</p>-->
+								
+								<p>{{list.summary}}</p>
+								
 							</div>
 						</div>
 					</a>
@@ -123,9 +134,9 @@
 				var $this = this;
 				window.addEventListener('scroll', function() {
 					var b = document.body.scrollTop;
-					if(b >= 2304 && b < 4435) {
+					if(b >= 2305 && b < 4435) {
 						$this.index = "b";
-					} else if(b >= 4436) {
+					} else if(b >= 4435) {
 						$this.index = "c";
 					} else {
 						$this.index = "a";
@@ -153,7 +164,6 @@
 					})
 					.then(function(response) {
 						const data = response.data.data.SceneryList;
-						console.log(data);
 						$this.dataList = $this.dataList.concat(data);
 					})
 					.catch(function(error) {
@@ -163,24 +173,35 @@
 		},
 		mounted() {
 			var $this = this;
-			axios.post('/bip/gateway/scenery.resource/v1/resource/scenerysrcommend/recommend/?Labrador-Token=0a905013-886c-48d7-936f-c08226227398', {
-					totalcount: 10,
-					height: 160,
-					width: 180,
-					pagesize: 18,
-					Page: 1,
-					cityId: 53,
-					permanentcityid: "",
-					lon: 0,
-					lat: 0,
-					environment: 2,
-					os: 0,
-					MermberId: "",
-					SortOrderType: 2901001,
-					IsNeedShurtTour: 1
+//			axios.post('/bip/gateway/scenery.resource/v1/resource/scenerysrcommend/recommend/?Labrador-Token=0a905013-886c-48d7-936f-c08226227398', {
+//					totalcount: 10,
+//					height: 160,
+//					width: 180,
+//					pagesize: 18,
+//					Page: 1,
+//					cityId: 53,
+//					permanentcityid: "",
+//					lon: 0,
+//					lat: 0,
+//					environment: 2,
+//					os: 0,
+//					MermberId: "",
+//					SortOrderType: 2901001,
+//					IsNeedShurtTour: 1
+//				})
+//				.then(function(response) {
+//					const data = response.data.data.SceneryList;
+//					$this.dataList = data;
+//				})
+//				.catch(function(error) {
+//					console.log(error);
+//				});
+
+
+			axios.get('/node/api/scenery/felist', {
 				})
 				.then(function(response) {
-					const data = response.data.data.SceneryList;
+					const data = response.data.data;
 					$this.dataList = data;
 				})
 				.catch(function(error) {
