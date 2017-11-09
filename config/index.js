@@ -73,6 +73,16 @@ module.exports = {
         '/wsq': {
             target: 'https://appnew.ly.com',
             changeOrigin: true
+        },
+        
+        
+//      读取自己写的后台接口
+        '/node': {
+            target: 'http://localhost:5000',
+            changeOrigin: true,
+            pathRewrite: {
+              '^/node': ''
+            }
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
