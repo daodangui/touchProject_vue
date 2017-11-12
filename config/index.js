@@ -78,7 +78,7 @@ module.exports = {
         
 //      读取自己写的后台接口
         '/node': {
-            target: 'http://localhost:5000',
+            target: 'http://10.9.164.35:5000',
             changeOrigin: true,
             pathRewrite: {
               '^/node': ''

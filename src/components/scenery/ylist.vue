@@ -20,26 +20,30 @@
 			</ul>
 		</div>
 
+		<div v-if="issocket" class="recommend" @click="refresh()">
+			有新的景点推荐
+		</div>
+
 		<div class="list">
 			<ul v-if="dataList">
 				<li v-for="(list,i) in dataList" :key="i" @click="gotoDetail(list)">
 					<a href="javascript:void(0)">
 						<div class="list-left">
 							<!--<img :src="list.PictureUrl" alt="" />-->
-							<img :src="'http://localhost:5000/upload/'+list.picture" alt="" />
+							<img :src="'http://10.9.164.35:5000/upload/'+list.picture" alt="" />
 						</div>
 
 						<div class="list-right">
 							<!--<h2>{{list.Name}} <span>(5A)</span></h2>-->
-							<h2>{{list.sceneryName}} <span>(5A)</span></h2>
-							
+							<h2>{{list.sceneryName}} <span>({{list.grade}}A)</span></h2>
+
 							<div class="list-money">
 								<p class="detail">
 									<span class="list-price">同程价</span>
 									<span class="yj">¥</span>
 									<!--<span class="money">{{list.Pirce}}</span>-->
 									<span class="money">{{list.price}}</span>
-									
+
 									<span class="qi">起</span>
 								</p>
 								<i></i>
@@ -54,18 +58,19 @@
 								<p class="list-count-wrap">
 									<span class="dp-count">{{list.commentcount}}条点评</span>&nbsp;&nbsp;
 									<!--<span class="dp-count">{{list.CommentCount}}条点评</span>&nbsp;&nbsp;-->
-									
+
 									<!--<span class="my-count">{{list.Satisfaction}}%</span>-->
-									
+									<span class="my-count">{{list.satisfaction}}%</span>
+
 									<span class="my-text">满意</span>
 								</p>
 							</div>
 
 							<div class="list-desc">
 								<!--<p>{{list.Summary}}</p>-->
-								
+
 								<p>{{list.summary}}</p>
-								
+
 							</div>
 						</div>
 					</a>
@@ -86,7 +91,7 @@
 
 <script>
 	import axios from 'axios';
-	var cityId=53;
+	var cityId = 53;
 	export default {
 		data() {
 			return {
@@ -94,7 +99,8 @@
 				index: "a",
 				isfixed: false,
 				topvalue: 0,
-				isActive: false
+				isActive: false,
+				issocket: false
 			}
 		},
 		methods: {
@@ -116,7 +122,7 @@
 					var anchor = document.querySelector(s);
 					document.body.scrollTop = anchor.offsetTop; // chrome
 					document.documentElement.scrollTop = anchor.offsetTop; // firefox
-					
+
 				}
 			},
 			check() {
@@ -169,37 +175,59 @@
 					.catch(function(error) {
 						console.log(error);
 					});
+			},
+
+			//socket消息推送
+			refresh() {
+				var $this = this;
+				axios.get('/node/api/scenery/felist', {})
+					.then(function(response) {
+						const data = response.data.data.reverse();
+						$this.dataList = data;
+					})
+					.catch(function(error) {
+						console.log(error);
+					});
+					
+				this.issocket=false;
 			}
 		},
 		mounted() {
-			var $this = this;
-//			axios.post('/bip/gateway/scenery.resource/v1/resource/scenerysrcommend/recommend/?Labrador-Token=0a905013-886c-48d7-936f-c08226227398', {
-//					totalcount: 10,
-//					height: 160,
-//					width: 180,
-//					pagesize: 18,
-//					Page: 1,
-//					cityId: 53,
-//					permanentcityid: "",
-//					lon: 0,
-//					lat: 0,
-//					environment: 2,
-//					os: 0,
-//					MermberId: "",
-//					SortOrderType: 2901001,
-//					IsNeedShurtTour: 1
-//				})
-//				.then(function(response) {
-//					const data = response.data.data.SceneryList;
-//					$this.dataList = data;
-//				})
-//				.catch(function(error) {
-//					console.log(error);
-//				});
-
-
-			axios.get('/node/api/scenery/felist', {
-				})
+			var $this=this;
+			var ws = new WebSocket('ws://127.0.0.1:8088');
+			ws.onopen = function() {
+				ws.send("大家好2")
+			}
+			ws.onmessage = function(event) {
+				if(event.data=="大家好"){
+					$this.issocket = true;
+				}
+			}
+			
+			//			axios.post('/bip/gateway/scenery.resource/v1/resource/scenerysrcommend/recommend/?Labrador-Token=0a905013-886c-48d7-936f-c08226227398', {
+			//					totalcount: 10,
+			//					height: 160,
+			//					width: 180,
+			//					pagesize: 18,
+			//					Page: 1,
+			//					cityId: 53,
+			//					permanentcityid: "",
+			//					lon: 0,
+			//					lat: 0,
+			//					environment: 2,
+			//					os: 0,
+			//					MermberId: "",
+			//					SortOrderType: 2901001,
+			//					IsNeedShurtTour: 1
+			//				})
+			//				.then(function(response) {
+			//					const data = response.data.data.SceneryList;
+			//					$this.dataList = data;
+			//				})
+			//				.catch(function(error) {
+			//					console.log(error);
+			//				});
+			axios.get('/node/api/scenery/felist', {})
 				.then(function(response) {
 					const data = response.data.data;
 					$this.dataList = data;
@@ -263,6 +291,12 @@
 					border-bottom: 3px solid #23beae;
 				}
 			}
+		}
+		.recommend {
+			height: 30px;
+			background: greenyellow;
+			text-align: center;
+			line-height: 30px;
 		}
 		.list {
 			width: 100%;
