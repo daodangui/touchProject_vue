@@ -11,6 +11,7 @@ import searchInfo from '../page/searchInfo.vue';
 import details from '../page/details.vue';
 import ycollect from '../page/ycollect.vue';
 import square from '../page/square.vue';
+import CSpage from '../page/CSpage.vue';
 
 export default [
 	{
@@ -67,5 +68,9 @@ export default [
 	{
 		path: '/square',
 		component: square
+	},
+	{
+		path: '/CSpage',
+		component: CSpage
 	}
 ]
