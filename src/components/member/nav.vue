@@ -48,10 +48,10 @@
 					<i class="yo-ico">&#xe601;</i>
 				</a>
 			</div>
-			<div class="menubar">
+			<div @click="toCSpage()" class="menubar">
 				<a href="javascript:void(0)">
 					<i class="yo-ico">&#xe629;</i>
-					<span>关于同程</span>
+					<span>在线客服</span>
 					<i class="yo-ico">&#xe601;</i>
 				</a>
 			</div>
@@ -78,6 +78,9 @@ export default {
 			}else{
 				this.$router.push('/login')
 			}
+		},
+		toCSpage(){
+			this.$router.push('/CSpage')
 		}
 	}
 }

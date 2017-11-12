@@ -66,6 +66,7 @@ export default{
 			})
 			.then(function (response) {
 				if(response.data.data.success){
+					window.username = $this.username
 					if(parseInt(response.data.data.user.status)){
 						$this.$store.commit('changeLoginState', {
 							login: true,
